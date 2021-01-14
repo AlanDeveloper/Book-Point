@@ -10,6 +10,4 @@ Tecnologias utilizadas para criação da aplicação:
 
 ## REQUISITOS FUNCIONAIS
 
-Uma listagem simples para implementação.
-
 https://docs.google.com/document/d/1xKc3oBkYuAmbsjqR4AIBmHPJlgFMo0TIc2OxjI1lkZ4/edit?usp=sharing
