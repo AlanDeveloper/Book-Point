@@ -6,3 +6,8 @@ Tecnologias utilizadas para criação da aplicação:
 
 - PHP
 - PostgresSQL
+
+
+## REQUISITOS FUNCIONAIS
+
+https://docs.google.com/document/d/1xKc3oBkYuAmbsjqR4AIBmHPJlgFMo0TIc2OxjI1lkZ4/edit?usp=sharing
