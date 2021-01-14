@@ -7,6 +7,8 @@ Tecnologias utilizadas para criação da aplicação:
 - PHP
 - PostgresSQL
 
+Link do projeto: https://bk-point.herokuapp.com
+
 
 ## REQUISITOS FUNCIONAIS
 
