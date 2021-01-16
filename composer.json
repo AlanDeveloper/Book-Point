@@ -1,10 +1,24 @@
 {
+    "name": "alandeveloper/bookpoint",
+    "description": "Um projeto de livraria em PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AlanDeveloper",
+            "email": "alanssantos32@gmail.com"
+        }
+    ],
+    "scripts": {
+        "start": [
+            "php -S localhost:2000"
+        ]
+    },
     "autoload": {
         "psr-4": {
-            "MyApp\\": "src/"
+            "MyApp\\": "app/"
         },
         "files": [
-            "src/Config.php"
+            "app/Config.php"
         ]
     },
     "require": {
