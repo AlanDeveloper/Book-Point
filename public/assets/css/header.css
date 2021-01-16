@@ -1,0 +1,21 @@
+header {
+    height: 100px;
+    background-color: var(--color-primary);
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+}
+
+header ul li, header h1 {
+    padding: 37px 20px;
+}

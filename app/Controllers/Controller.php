@@ -9,11 +9,11 @@ class Controller {
         $loader = new \Twig\Loader\FilesystemLoader(['public', 'templates']);
         $twig = new \Twig\Environment($loader);
 
-        echo $twig->render($view.'.html.twig', $params);
+        echo $twig->render($view.'.html', $params);
     }
 
     public function home()
     {
-        $this->load("home", ["name" => "Alan"]);
+        $this->load("home");
     }
 }

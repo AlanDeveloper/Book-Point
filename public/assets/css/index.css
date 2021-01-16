@@ -1,0 +1,15 @@
+:root {
+    --color-primary: #022B3A;
+}
+
+@font-face {
+  font-family: 'Sen';
+  src: url('../fonts/Sen-Regular.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Sen';
+    box-sizing: border-box;
+}

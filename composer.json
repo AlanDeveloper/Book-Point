@@ -9,9 +9,10 @@
         }
     ],
     "scripts": {
-        "start": [
-            "php -S localhost:2000"
-        ]
+        "start": "php -S localhost:2000"
+    },
+    "config": {
+        "process-timeout": 0
     },
     "autoload": {
         "psr-4": {
