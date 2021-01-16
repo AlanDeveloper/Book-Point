@@ -1,13 +1,26 @@
 {% block header %}
     <header>
         <nav>
-            <h1>BookPoint</h1>
+            <div class="mobile">
+                <div class="menu">
+                    <input type="checkbox" id="checkbox-menu">
+                    <label for="checkbox-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+            <h1><a href="/">BookPoint</a></h1>
             <ul>
-                <li><a href="#" class="active">Início</a></li>
+                <li><a href="/" class="active">Início</a></li>
                 <li><a href="#">Suporte</a></li>
                 <li><a href="#"><i class="icon-user"></i></a></li>
                 <li><a href="#"><i class="icon-cart"></i></a></li>
             </ul>
+            <div class="mobile">
+                <a href="#"><i class="icon-cart"></i></a>
+            </div>
         </nav>
     </header>
 {% endblock %}

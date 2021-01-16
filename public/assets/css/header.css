@@ -1,6 +1,4 @@
 header {
-    color: white;
-    width: 100%;
     height: 100px;
     background-color: var(--color-primary);
 }
@@ -23,16 +21,19 @@ header ul li, header h1 {
     align-self: center;
 }
 
-header ul li a {
-    color: var(--color-silver-text);
-    text-decoration: none;
-}
-
-header ul li .active {
+header h1 a {
     color: var(--color-active-text);
 }
 
-header ul li i.icon-user, header ul li i.icon-cart {
+header ul li a {
+    color: var(--color-silver);
+}
+
+header ul li .active, header ul li a:hover {
+    color: var(--color-active-text);
+}
+
+header i.icon-user, header i.icon-cart {
     display: block;
     width: 40px;
     height: 40px;
@@ -42,10 +43,85 @@ header ul li i.icon-user, header ul li i.icon-cart {
     top: 5px;
 }
 
-header ul li i.icon-user {
+header i.icon-user {
     background-image: url('../imgs/user.svg');
 }
 
-header ul li i.icon-cart {
+header i.icon-cart {
     background-image: url('../imgs/cart.svg');
+}
+
+header i:hover, header a.active i, header .menu:hover span {
+    filter: brightness(2);
+}
+
+header nav .mobile {
+    display: none;
+}
+
+header .menu {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .menu #checkbox-menu {
+  position: absolute;
+  opacity: 0;
+}
+
+header .menu label {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  height: 22px;
+  width: 30px;
+}
+
+header .menu label span {
+  position: absolute;
+  display: block;
+  height: 3px;
+  width: 100%;
+  border-radius: 30px;
+  background-color: #777777;
+  transition: 0.25s ease-in-out;
+}
+
+header .menu label span:nth-child(1){
+  top: 0;
+}
+
+header .menu label span:nth-child(2){
+  top: 10px;
+}
+
+header .menu label span:nth-child(3){
+  top: 20px;
+}
+
+header .menu #checkbox-menu:checked + label span:nth-child(1){
+  transform: rotate(-45deg);
+  top: 8px;
+}
+
+header .menu #checkbox-menu:checked + label span:nth-child(2){
+  opacity: 0;
+}
+
+header .menu #checkbox-menu:checked + label span:nth-child(3){
+  transform: rotate(45deg);
+  top:8px;
+}
+
+@media(max-width: 700px) {
+    header ul {
+        display: none;
+    }
+
+    header nav .mobile {
+        display: block;
+        padding: 30px 20px;
+    }
 }
