@@ -71,13 +71,24 @@ header ul.side-nav a.active, header ul.side-nav a:hover {
   background-color: var(--color-secondary);
 }
 
+@media(max-width: 1000px) {
+  header nav {
+    padding-left: 15px;
+  }
+
+  header ul.hide-on-med-and-down {
+    position: relative;
+    right: 15px;
+  }
+}
+
 @media(max-width: 992px) {
   html { 
     font-size: 1rem;
   }
 
   header ul.hide-on-med-and-down {
-    display: block !important;
+    display: block !important; 
   }
 
   header nav a.brand-logo {
@@ -87,6 +98,12 @@ header ul.side-nav a.active, header ul.side-nav a:hover {
 }
 
 @media(max-width: 700px) {
+  header nav {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+  }
+  
   header ul.hide-on-med-and-down {
     display: none !important;
   }

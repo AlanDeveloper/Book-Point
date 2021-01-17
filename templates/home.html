@@ -5,10 +5,17 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="public/assets/css/header.css">
     <link rel="stylesheet" href="public/assets/css/footer.css">
+    <link rel="stylesheet" href="public/assets/css/home.css">
 {% endblock %}
 
 {% block body %}
     {% block header %}{{ parent() }}{% endblock %}
+    <main>
+        <form method="POST" class="bar-search">
+            <input type="search" name="search" placeholder="O que você está procurando?" />
+            <button type="submit">Pesquisar</button>
+        </form>
+    </main>
     {% block footer %}{{ parent() }}{% endblock %}
 {% endblock%}
 
