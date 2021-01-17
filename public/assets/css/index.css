@@ -1,8 +1,12 @@
 :root {
     --color-primary: #022B3A;
     --color-secondary: #1F7A8C;
+
     --color-silver: #777777;
-    --color-active-text: #ffffff;
+    
+    /* TEXT COLORS */
+    --text-silver: #C4C4C4;
+    --text-active: #ffffff;
 }
 
 @font-face {

@@ -38,12 +38,8 @@ header a.p-right {
   padding-right: 0px;
 }
 
-header nav ul a {
-  color: var(--color-silver);
-}
-
 header ul li .active, header ul li a:hover {
-  color: var(--color-active-text);
+  color: var(--text-active);
   background-color: transparent;
 }
 
@@ -66,12 +62,12 @@ header ul.side-nav {
   background-color: var(--color-primary);
 }
 
-header ul.side-nav a {
-  color: var(--color-silver);
+header nav ul a, header ul.side-nav a {
+  color: var(--text-silver);
 }
 
 header ul.side-nav a.active, header ul.side-nav a:hover {
-  color: var(--color-active-text);
+  color: var(--text-active);
   background-color: var(--color-secondary);
 }
 

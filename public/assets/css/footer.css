@@ -7,12 +7,7 @@ footer {
     width:100%;
 }
 
-footer p {
-    color: var(--color-active-text);
+footer p, footer p a {
+    color: var(--text-active);
     padding: 10px;
-}
-
-footer p a {
-    margin-bottom: 100px;
-    color: var(--color-active-text);
 }
