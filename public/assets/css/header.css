@@ -91,6 +91,9 @@ header ul.side-nav a.active, header ul.side-nav a:hover {
 }
 
 @media(max-width: 700px) {
+  html {
+    font-size: 14px;
+  }
   header ul.hide-on-med-and-down {
     display: none !important;
   }
