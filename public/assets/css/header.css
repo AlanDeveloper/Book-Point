@@ -91,14 +91,12 @@ header ul.side-nav a.active, header ul.side-nav a:hover {
 }
 
 @media(max-width: 700px) {
-  html {
-    font-size: 14px;
-  }
   header ul.hide-on-med-and-down {
     display: none !important;
   }
 
   header nav a.brand-logo {
+    font-size: 1.5rem;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -121,6 +119,7 @@ header ul.side-nav a.active, header ul.side-nav a:hover {
   }
 
   header i.icon-menu {
+    top: 2px;
     filter: invert();
   }
 }
