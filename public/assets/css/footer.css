@@ -1,0 +1,13 @@
+footer {
+    height: 80px;
+    background-color: var(--color-primary);
+    text-align: center;
+}
+
+footer p {
+    padding: 10px;
+}
+
+footer p a {
+    text-decoration: underline;
+}

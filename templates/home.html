@@ -1,6 +1,17 @@
 {% extends 'index.html' %}
 {% use 'components/header.html' %}
+{% use 'components/footer.html' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="public/assets/css/header.css">
+    <link rel="stylesheet" href="public/assets/css/footer.css">
+{% endblock %}
 
 {% block body %}
     {% block header %}{{ parent() }}{% endblock %}
+    <!-- {% block footer %}{{ parent() }}{% endblock %} -->
 {% endblock%}
+
+{% block javascripts %}
+    <script src="public/assets/js/header.js"></script>
+{% endblock %}

@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="public/assets/css/materialize.min.css" />
     <link rel="stylesheet" href="public/assets/css/index.css">
-    <link rel="stylesheet" href="public/assets/css/header.css">
+    {% block stylesheets %}{% endblock %}
     
     <title>BookPoint</title>
 </head>
 <body>
     {% block body %}{% endblock %}
+    <script src="public/assets/js/jquery.min.js"></script>
+    <script src="public/assets/js/materialize.min.js"></script>
+    {% block javascripts %}{% endblock %}
 </body>
 </html>

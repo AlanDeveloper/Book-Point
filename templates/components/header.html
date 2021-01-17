@@ -1,25 +1,32 @@
 {% block header %}
     <header>
         <nav>
-            <div class="mobile">
-                <div class="menu">
-                    <input type="checkbox" id="checkbox-menu">
-                    <label for="checkbox-menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </label>
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">BookPoint</a>
+                <!-- <a href="#" data-activates="menu-mobile" class="button-collapse">
+                    <i class="material-icons">menu</i>
+                </a> -->
+                <div class="mobile left">
+                    <a href="#" data-activates="menu-mobile" class="button-collapse"><i class="icon-menu"></i></a>
                 </div>
-            </div>
-            <h1><a href="/">BookPoint</a></h1>
-            <ul>
-                <li><a href="/" class="active">Início</a></li>
-                <li><a href="#">Suporte</a></li>
-                <li><a href="#"><i class="icon-user"></i></a></li>
-                <li><a href="#"><i class="icon-cart"></i></a></li>
-            </ul>
-            <div class="mobile">
-                <a href="#"><i class="icon-cart"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/" class="active">Início</a></li>
+                    <li><a href="#">Suporte</a></li>
+                    <li><a href="#"><i class="icon-user"></i></a></li>
+                    <li><a href="#" class="p-right"><i class="icon-cart"></i></a></li>
+                </ul>
+                <ul class="side-nav" id="menu-mobile">
+                    <li><a href="/" class="active">INÍCIO</a></li>
+                    <li><a href="#">TODAS AS CATEGORIAS</a></li>
+                    <li><a href="#">MELHORES PROMOÇÕES</a></li>
+                    <li><a href="#">MENOR PREÇO</a></li>
+                    <li><a href="#">SUPORTE</a></li>
+                    <li><a href="#">ENTRAR</a></li>
+                    <li><a href="#">CADASTRAR</a></li>
+                </ul>
+                <div class="mobile right">
+                    <a href="#"><i class="icon-cart"></i></a>
+                </div>
             </div>
         </nav>
     </header>

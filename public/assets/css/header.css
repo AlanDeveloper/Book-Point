@@ -1,127 +1,123 @@
 header {
-    height: 100px;
-    background-color: var(--color-primary);
+  height: 100px;
+  background-color: var(--color-primary);
 }
 
 header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1000px;
-    margin: auto;
+  background-color: transparent;
+  box-shadow: none;
+  line-height: 100px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-header ul {
-    display: flex;
-    list-style: none;
-}
-
-header ul li, header h1 {
-    padding: 30px 20px;
-    align-self: center;
-}
-
-header h1 a {
-    color: var(--color-active-text);
-}
-
-header ul li a {
-    color: var(--color-silver);
-}
-
-header ul li .active, header ul li a:hover {
-    color: var(--color-active-text);
-}
-
-header i.icon-user, header i.icon-cart {
-    display: block;
-    width: 40px;
-    height: 40px;
-    background-size: 75%;
-    background-repeat: no-repeat;
-    position: relative;
-    top: 5px;
+header i.icon-user, header i.icon-cart, header i.icon-menu {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 30px;
 }
 
 header i.icon-user {
-    background-image: url('../imgs/user.svg');
+  left: 7px;
+  background-image: url('../imgs/user.svg');
 }
 
 header i.icon-cart {
-    background-image: url('../imgs/cart.svg');
+  background-image: url('../imgs/cart.svg');
 }
 
-header i:hover, header a.active i, header .menu:hover span {
-    filter: brightness(2);
+header i.icon-menu {
+  background-image: url('../imgs/menu.svg');
 }
 
+header a.p-right {
+  padding-right: 0px;
+}
+
+header nav ul a {
+  color: var(--color-silver);
+}
+
+header ul li .active, header ul li a:hover {
+  color: var(--color-active-text);
+  background-color: transparent;
+}
+
+header i:hover, header a.active i {
+  filter: brightness(2);
+}
+
+/* MOBILE */
 header nav .mobile {
-    display: none;
+  display: none;
 }
 
-header .menu {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+header nav a.brand-logo {
+  top: -2px;
+  left: 5px;
 }
 
-header .menu #checkbox-menu {
-  position: absolute;
-  opacity: 0;
+header ul.side-nav {
+  width: 250px;
+  background-color: var(--color-primary);
 }
 
-header .menu label {
-  cursor: pointer;
-  position: relative;
-  display: block;
-  height: 22px;
-  width: 30px;
+header ul.side-nav a {
+  color: var(--color-silver);
 }
 
-header .menu label span {
-  position: absolute;
-  display: block;
-  height: 3px;
-  width: 100%;
-  border-radius: 30px;
-  background-color: #777777;
-  transition: 0.25s ease-in-out;
+header ul.side-nav a.active, header ul.side-nav a:hover {
+  color: var(--color-active-text);
+  background-color: var(--color-secondary);
 }
 
-header .menu label span:nth-child(1){
-  top: 0;
-}
+@media(max-width: 992px) {
+  html { 
+    font-size: 1rem;
+  }
 
-header .menu label span:nth-child(2){
-  top: 10px;
-}
+  header ul.hide-on-med-and-down {
+    display: block !important;
+  }
 
-header .menu label span:nth-child(3){
-  top: 20px;
-}
-
-header .menu #checkbox-menu:checked + label span:nth-child(1){
-  transform: rotate(-45deg);
-  top: 8px;
-}
-
-header .menu #checkbox-menu:checked + label span:nth-child(2){
-  opacity: 0;
-}
-
-header .menu #checkbox-menu:checked + label span:nth-child(3){
-  transform: rotate(45deg);
-  top:8px;
+  header nav a.brand-logo {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
 }
 
 @media(max-width: 700px) {
-    header ul {
-        display: none;
-    }
+  header ul.hide-on-med-and-down {
+    display: none !important;
+  }
 
-    header nav .mobile {
-        display: block;
-        padding: 30px 20px;
-    }
+  header nav a.brand-logo {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  
+  header nav .mobile {
+    display: block;
+    padding: 30px 20px;
+  }
+
+  header nav .button-collapse {
+    height: 40px;
+    margin: 0px;
+  }
+
+  header i.icon-cart, header i.icon-menu {
+    filter: brightness(2);
+    top: 0px;
+    left: 5px;
+  }
+
+  header i.icon-menu {
+    filter: invert();
+  }
 }
