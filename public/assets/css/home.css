@@ -49,3 +49,17 @@ main form.bar-search > button {
         padding: 5px 10px;
     }
 }
+
+@media(max-width: 700px) {
+    main {
+        font-size: .9rem;
+    }
+
+    main form.bar-search input[type=search] {
+        padding: 2px 15px;
+    }
+
+    main form.bar-search > button {
+        padding: 2px 5px;
+    }
+}
