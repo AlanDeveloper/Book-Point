@@ -8,6 +8,7 @@ header nav {
   box-shadow: none;
   line-height: 100px;
   max-width: 1000px;
+  height: 100px;
   margin: auto;
 }
 
@@ -34,6 +35,23 @@ header i.icon-menu {
   background-image: url('../imgs/menu.svg');
 }
 
+header i.icon-arrow {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 20px;
+  left: 10px;
+  filter: invert();
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-image: url('../imgs/arrow_down.svg');
+}
+
+header i.icon-arrow:hover {
+  filter: invert();
+}
+
 header a.p-right {
   padding-right: 0px;
 }
@@ -45,6 +63,28 @@ header ul li .active, header ul li a:hover {
 
 header i:hover, header a.active i {
   filter: brightness(2);
+}
+
+/* LINKS */
+header nav.nav-secondary {
+  max-width: 100%;
+  line-height: 50px;
+  height: 50px;
+  background-color: var(--color-secondary);
+}
+
+header nav.nav-secondary div.links {
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+header nav.nav-secondary div.links a:hover {
+  opacity: 0.8;
 }
 
 /* MOBILE */
@@ -71,14 +111,62 @@ header ul.side-nav a.active, header ul.side-nav a:hover {
   background-color: var(--color-secondary);
 }
 
+/* DROPDOWN */
+header nav .dropdown, header nav .dropdown-login {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+header nav .dropdown {
+  background-color: var(--color-secondary);
+  min-width: 160px;
+}
+
+header nav .dropdown-login {
+  margin-top: 20px;
+  background-color: var(--color-primary);
+  min-width: 80px;
+  line-height: 70px;
+}
+
+header nav .dropdown a {
+  display: block;
+  padding: 12px 16px;
+}
+
+header nav #link {
+  display: flex;
+  justify-content: center;
+}
+
+header nav .dropdown a:hover, header nav .dropdown a:active, header nav .dropdown-login a:hover, header nav .dropdown-login a:active {
+  color: var(--text-active);
+}
+
+header nav .dropbtn:hover .dropdown, header nav .dropbtn:hover .dropdown-login {
+  display: block;
+}
+
 @media(max-width: 1000px) {
   header nav {
     padding-left: 15px;
+    height: 90px;
+    line-height: 90px;
+  }
+
+  header nav.nav-secondary, header nav .dropdown a, header nav .dropdown-login a {
+    font-size: .9rem;
   }
 
   header ul.hide-on-med-and-down {
     position: relative;
     right: 15px;
+  }
+
+  header nav.nav-secondary > div {
+    margin-right: 20px;
   }
 }
 
@@ -107,6 +195,10 @@ header ul.side-nav a.active, header ul.side-nav a:hover {
     margin-right: 0;
     padding-left: 0;
     line-height: 80px;
+  }
+
+  header nav.nav-secondary {
+    display: none;
   }
   
   header ul.hide-on-med-and-down {

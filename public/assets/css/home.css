@@ -1,7 +1,7 @@
 main {
     max-width: 1000px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 100px;
     flex: 1 0 auto;
 }
 
@@ -34,7 +34,7 @@ main form.bar-search > button {
 @media(max-width: 1000px) {
     main {
         margin: 0 15px;
-        margin-top: 50px;
+        margin-top: 90px;
     }
 
     main form.bar-search input[type=search] {
@@ -49,6 +49,7 @@ main form.bar-search > button {
 @media(max-width: 700px) {
     main {
         font-size: .9rem;
+        margin-top: 50px;
     }
 
     main form.bar-search input[type=search] {
