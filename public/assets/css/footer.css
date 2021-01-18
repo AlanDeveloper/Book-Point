@@ -11,3 +11,14 @@ footer p, footer p a {
     color: var(--text-active);
     padding: 10px;
 }
+
+@media(max-width: 700px) {
+    footer {
+        height: 60px;
+    }
+
+    footer p, footer p a {
+        padding: 5px;
+        font-size: .9rem;
+    }
+}

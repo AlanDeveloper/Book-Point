@@ -1,12 +1,12 @@
 :root {
-    --color-primary: #022B3A;
-    --color-secondary: #1F7A8C;
+  --color-primary: #022B3A;
+  --color-secondary: #1F7A8C;
 
-    --color-silver: #777777;
-    
-    /* TEXT COLORS */
-    --text-silver: #C4C4C4;
-    --text-active: #ffffff;
+  --color-silver: #777777;
+  
+  /* TEXT COLORS */
+  --text-silver: #C4C4C4;
+  --text-active: #ffffff;
 }
 
 @font-face {
@@ -15,8 +15,12 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Sen';
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Sen';
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
 }
