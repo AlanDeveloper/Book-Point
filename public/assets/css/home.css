@@ -10,6 +10,7 @@ main form.bar-search {
 }
 
 main form.bar-search input[type=search] {
+    width: 1000px;
     color: var(--text-silver);
     margin: 0;
     padding: 5px 25px;
