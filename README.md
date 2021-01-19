@@ -16,6 +16,8 @@ https://docs.google.com/document/d/1xKc3oBkYuAmbsjqR4AIBmHPJlgFMo0TIc2OxjI1lkZ4/
 
 ## SKETCH DAS TELAS
 
+Produzidas em conjunto com [Silvio Quintana](https://github.com/SilvioGQ)
+
 https://www.figma.com/file/g30sl7aicL6Zw7Br08yokD/BookPoint?node-id=0%3A1
 
 
