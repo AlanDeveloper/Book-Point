@@ -1,0 +1,43 @@
+main .gallery {
+    background: #EEE;
+    margin-top: 50px;
+}
+
+main .gallery-cell {
+    width: 100%;
+    height: 300px;
+    background-size: 80%;
+    margin-right: 10px;
+    counter-increment: gallery-cell;
+}
+
+main .gallery-cell#img1 {
+    background-image: url('../imgs/thumb.jpg');
+}
+
+main .gallery-cell#img2 {
+    background-image: url('../imgs/thumb-2.jpg');
+}
+
+main .gallery-cell:before {
+    display: block;
+    text-align: center;
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+}
+
+@media(max-width: 1000px) {
+    main .gallery-cell {
+        height: 250px;
+    }
+}
+
+@media(max-width: 700px) {
+    main .gallery {
+        margin-top: 25px;
+    }
+    main .gallery-cell {
+        height: 200px;
+    }
+}

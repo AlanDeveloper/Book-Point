@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="public/assets/css/header.css">
     <link rel="stylesheet" href="public/assets/css/footer.css">
     <link rel="stylesheet" href="public/assets/css/home.css">
+    <link rel="stylesheet" href="public/assets/css/barSearch.css">
+    <link rel="stylesheet" href="public/assets/css/flickity.css">
+    <link rel="stylesheet" href="public/assets/css/carousel.css">
 {% endblock %}
 
 {% block body %}
@@ -15,8 +18,14 @@
             <input type="search" name="search" placeholder="O que você está procurando?" />
             <button type="submit">Pesquisar</button>
         </form>
+        <div class="gallery js-flickity">
+            <div class="gallery-cell" id="img1"></div>
+            <div class="gallery-cell" id="img2"></div>
+        </div>
     </main>
     {% block footer %}{{ parent() }}{% endblock %}
 {% endblock%}
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script src="public/assets/js/flickity.pkgd.min.js"></script>
+{% endblock %}
