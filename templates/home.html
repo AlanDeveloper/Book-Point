@@ -14,7 +14,7 @@
 {% block body %}
     {% block header %}{{ parent() }}{% endblock %}
     <main>
-        <form method="GET" class="bar-search">
+        <form action="/search" method="GET" class="bar-search">
             <input type="search" name="query" placeholder="O que você está procurando?" />
             <button type="submit">Pesquisar</button>
         </form>

@@ -1,0 +1,109 @@
+{% extends 'index.html' %}
+{% use 'components/header.html' %}
+{% use 'components/footer.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="public/assets/css/header.css">
+<link rel="stylesheet" href="public/assets/css/footer.css">
+<link rel="stylesheet" href="public/assets/css/home.css">
+<link rel="stylesheet" href="public/assets/css/barSearch.css">
+<link rel="stylesheet" href="public/assets/css/flickity.css">
+<link rel="stylesheet" href="public/assets/css/carousel.css">
+{% endblock %}
+
+{% block body %}
+{% block header %}{{ parent() }}{% endblock %}
+<main>
+    <form method="GET" class="bar-search">
+        <input type="search" name="query" placeholder="O que você está procurando?" />
+        <button type="submit">Pesquisar</button>
+    </form>
+    <div class="gallery js-flickity">
+        <div class="gallery-cell" id="img1"></div>
+        <div class="gallery-cell" id="img2"></div>
+    </div>
+    <div class="category">
+        <h1>Resultado para {{ query |upper }}</h1>
+        <hr>
+        <div class="gallery js-flickity books">
+            <div class="gallery-cell card is-selected">
+                <div>
+                    <img src="public/assets/imgs/book.png" alt="">
+                    <div class="details">
+                        <p class="title">Trono de Vidro</p>
+                        <p class="subtitle">Harry Potter</p>
+                        <p class="price">R$ 24,50</p>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-cell card is-selected">
+                <div>
+                    <img src="public/assets/imgs/book.png" alt="">
+                    <div class="details">
+                        <p class="title">Trono de Vidro</p>
+                        <p class="subtitle">Harry Potter</p>
+                        <p class="price">R$ 24,50</p>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-cell card is-selected">
+                <div>
+                    <img src="public/assets/imgs/book.png" alt="">
+                    <div class="details">
+                        <p class="title">Trono de Vidro</p>
+                        <p class="subtitle">Harry Potter</p>
+                        <p class="price">R$ 24,50</p>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-cell card is-selected">
+                <div>
+                    <img src="public/assets/imgs/book.png" alt="">
+                    <div class="details">
+                        <p class="title">Trono de Vidro</p>
+                        <p class="subtitle">Harry Potter</p>
+                        <p class="price">R$ 24,50</p>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-cell card is-selected">
+                <div>
+                    <img src="public/assets/imgs/book.png" alt="">
+                    <div class="details">
+                        <p class="title">Trono de Vidro</p>
+                        <p class="subtitle">Harry Potter</p>
+                        <p class="price">R$ 24,50</p>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-cell card is-selected">
+                <div>
+                    <img src="public/assets/imgs/book.png" alt="book">
+                    <div class="details">
+                        <p class="title">Trono de Vidro</p>
+                        <p class="subtitle">Harry Potter</p>
+                        <p class="price">R$ 24,50</p>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% block footer %}{{ parent() }}{% endblock %}
+{% endblock%}
+
+{% block javascripts %}
+<script src="public/assets/js/flickity.pkgd.min.js"></script>
+<script>
+    $('.gallery').flickity({
+        cellAlign: 'left',
+        contain: true
+    });
+</script>
+{% endblock %}
