@@ -10,5 +10,6 @@ $router->namespace("MyApp\Controllers");
 
 $router->group(null);
 $router->get("/", "Controller:home");
+$router->get("/search", "Controller:search");
 
 $router->dispatch();

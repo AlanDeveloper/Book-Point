@@ -16,4 +16,9 @@ class Controller {
     {
         $this->load("home");
     }
+
+    public function search()
+    {
+        $this->load("search", ["query" => $_GET["query"]]);
+    }
 }
