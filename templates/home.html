@@ -22,10 +22,88 @@
             <div class="gallery-cell" id="img1"></div>
             <div class="gallery-cell" id="img2"></div>
         </div>
+        <div class="category">
+            <h1>MAIS POPULARES</h1>
+            <hr>
+            <div class="gallery js-flickity books">
+                <div class="gallery-cell card is-selected">
+                    <div>
+                        <img src="public/assets/imgs/book.png" alt="">
+                        <div class="details">
+                            <p class="title">Trono de Vidro</p>
+                            <p class="subtitle">Harry Potter</p>
+                            <p class="price">R$ 24,50</p>
+                            <button>Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-cell card is-selected">
+                    <div>
+                        <img src="public/assets/imgs/book.png" alt="">
+                        <div class="details">
+                            <p class="title">Trono de Vidro</p>
+                            <p class="subtitle">Harry Potter</p>
+                            <p class="price">R$ 24,50</p>
+                            <button>Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-cell card is-selected">
+                    <div>
+                        <img src="public/assets/imgs/book.png" alt="">
+                        <div class="details">
+                            <p class="title">Trono de Vidro</p>
+                            <p class="subtitle">Harry Potter</p>
+                            <p class="price">R$ 24,50</p>
+                            <button>Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-cell card is-selected">
+                    <div>
+                        <img src="public/assets/imgs/book.png" alt="">
+                        <div class="details">
+                            <p class="title">Trono de Vidro</p>
+                            <p class="subtitle">Harry Potter</p>
+                            <p class="price">R$ 24,50</p>
+                            <button>Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-cell card is-selected">
+                    <div>
+                        <img src="public/assets/imgs/book.png" alt="">
+                        <div class="details">
+                            <p class="title">Trono de Vidro</p>
+                            <p class="subtitle">Harry Potter</p>
+                            <p class="price">R$ 24,50</p>
+                            <button>Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-cell card is-selected">
+                    <div>
+                        <img src="public/assets/imgs/book.png" alt="book">
+                        <div class="details">
+                            <p class="title">Trono de Vidro</p>
+                            <p class="subtitle">Harry Potter</p>
+                            <p class="price">R$ 24,50</p>
+                            <button>Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     {% block footer %}{{ parent() }}{% endblock %}
 {% endblock%}
 
 {% block javascripts %}
     <script src="public/assets/js/flickity.pkgd.min.js"></script>
+    <script>
+        $('.gallery').flickity({
+            cellAlign: 'left',
+            contain: true
+        });
+    </script>
 {% endblock %}

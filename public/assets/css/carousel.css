@@ -1,6 +1,7 @@
 main .gallery {
-    background: #EEE;
+    background: transparent;
     margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 main .gallery-cell {
@@ -19,6 +20,14 @@ main .gallery-cell#img2 {
     background-image: url('../imgs/thumb-2.jpg');
 }
 
+main .gallery-cell.card {
+    box-shadow: none;
+    border: 1px solid var(--text-silver);
+    width: 25%;
+    height: 460px;
+    padding: 10px;
+}
+
 main .gallery-cell:before {
     display: block;
     text-align: center;
@@ -27,17 +36,120 @@ main .gallery-cell:before {
     color: white;
 }
 
+main .gallery.books .flickity-page-dots {
+    display: none;
+}
+
+/* CARD */
+main .gallery-cell.card div {
+    display: flex;
+    flex-direction: column;
+}
+
+main .gallery-cell.card img {
+    justify-content: center;
+    margin: 15px;
+}
+
+main .gallery-cell.card .details {
+    padding: 15px;
+    padding-top: 0;
+}
+
+main .gallery-cell.card p.title {
+    font-size: 20px;
+    color: var(--color-primary);
+}
+
+main .gallery-cell.card p.subtitle {
+    color: var(--color-silver);
+    font-size: 16px;
+}
+
+main .gallery-cell.card p.price {
+    color: var(--text-green);
+    font-size: 20px;
+}
+
+main .gallery-cell.card button {
+    width: 100px;
+    padding: 10px;
+    font-size: 16px;
+    color: var(--text-active);
+    border: none;
+    margin-top: 20px;
+    background-color: var(--color-secondary);
+}
+
 @media(max-width: 1000px) {
+    main .gallery {
+        margin-bottom: 75px;
+    }
     main .gallery-cell {
         height: 250px;
+    }
+}
+
+@media(max-width: 820px) {
+    main .gallery-cell.card {
+        width: 30%;
+        height: 440px;
+    }
+    
+    main .gallery-cell.card img {
+        margin: 10px;
+    }
+
+    main .gallery-cell.card .details {
+        padding: 10px;
+    }
+
+    main .gallery-cell.card p.title {
+        font-size: 18px;
+    }
+
+    main .gallery-cell.card p.subtitle {
+        font-size: 14px;
+    }
+
+    main .gallery-cell.card p.price {
+        font-size: 18px;
+    }
+
+    main .gallery-cell.card button {
+        margin-top: 15px;
     }
 }
 
 @media(max-width: 700px) {
     main .gallery {
         margin-top: 25px;
+        margin-bottom: 50px;
     }
+
     main .gallery-cell {
         height: 200px;
+    }
+
+    main .gallery-cell.card {
+        width: 35%;
+        height: 370px;
+    }
+
+    main .gallery-cell.card img {
+        margin: 0 20px;
+        max-height: 200px;
+    }
+}
+
+@media(max-width: 540px) {
+    main .gallery-cell.card {
+        width: 45%;
+    }
+}
+
+@media(max-width: 540px) {
+    main .gallery-cell.card {
+        width: 55%;
     }
 }

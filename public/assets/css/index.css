@@ -7,6 +7,7 @@
   /* TEXT COLORS */
   --text-silver: #C4C4C4;
   --text-active: #ffffff;
+  --text-green: #1E7200;
 }
 
 @font-face {
@@ -26,4 +27,22 @@ body {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   flex-direction: column;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+@media(max-width: 1000px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+}
+
+@media(max-width: 700px) {
+  h1 {
+    font-size: 1.5rem;
+  }
 }
