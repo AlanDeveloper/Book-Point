@@ -23,7 +23,7 @@ main form.form .btn-default {
 
 @media(max-width: 700px) {
     main form.form {
-        margin-bottom: 100px;
+        margin-bottom: 50px;
     }
 }
 
