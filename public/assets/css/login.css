@@ -21,12 +21,6 @@ main form.form .btn-default {
     margin-bottom: 50px;
 }
 
-@media(max-width: 700px) {
-    main {
-        margin-bottom: 50px;
-    }
-}
-
 @media(max-width: 450px) {
     main form.form h1 {
         margin-bottom: 50px;
