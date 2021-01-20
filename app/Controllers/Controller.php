@@ -9,6 +9,8 @@ class Controller {
         $loader = new \Twig\Loader\FilesystemLoader(['public', 'templates']);
         $twig = new \Twig\Environment($loader);
 
+        $params = array_merge($params, ["route" => explode("?", $_SERVER["REQUEST_URI"])[0]]); 
+
         echo $twig->render($view.'.html', $params);
     }
 
@@ -19,7 +21,9 @@ class Controller {
 
     public function search()
     {
-        $this->load("search", ["query" => $_GET["query"]]);
+        $this->load("search", [
+            "query" => $_GET["query"]
+        ]);
     }
     
     public function support()

@@ -57,7 +57,7 @@ header a.p-right {
 }
 
 header ul li .active, header ul li a:hover {
-  color: var(--text-active);
+  color: var(--color-active);
   background-color: transparent;
 }
 
@@ -104,11 +104,11 @@ header ul.side-nav {
 }
 
 header nav ul a, header ul.side-nav a {
-  color: var(--text-silver);
+  color: var(--color-silver);
 }
 
 header ul.side-nav a.active, header ul.side-nav a:hover {
-  color: var(--text-active);
+  color: var(--color-active);
   background-color: var(--color-secondary);
 }
 
@@ -143,7 +143,7 @@ header nav #link {
 }
 
 header nav .dropdown a:hover, header nav .dropdown a:active, header nav .dropdown-login a:hover, header nav .dropdown-login a:active {
-  color: var(--text-active);
+  color: var(--color-active);
 }
 
 header nav .dropbtn:hover .dropdown, header nav .dropbtn:hover .dropdown-login {

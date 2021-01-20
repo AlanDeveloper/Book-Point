@@ -6,7 +6,7 @@ footer {
 }
 
 footer p, footer p a {
-    color: var(--text-active);
+    color: var(--color-active);
     padding: 10px;
 }
 

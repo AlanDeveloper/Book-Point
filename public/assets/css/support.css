@@ -1,21 +1,10 @@
-main {
-    max-width: 1000px;
-    margin: auto;
-    margin-top: 100px;
-    flex: 1 0 auto;
-}
-
 main .info {
     margin-bottom: 40px;
 }
 
-main .info p#description {
+main .info p {
     margin-top: 20px;
     text-align: justify;
-}
-
-main .info p {
-    margin-top: 10px;
 }
 
 main form.form div {
@@ -36,33 +25,17 @@ main form.form textarea.form-input {
     padding: 10px 25px;
 }
 
-main form.form textarea.form-input:focus, main form.form textarea.form-input:active {
-    border: 2px solid #ffffff;
-    box-shadow: none;
-    border-radius: 0;
-}
-
 main form.form .btn-default {
     margin-bottom: 50px;
 }
 
 @media(max-width: 1000px) {
-    main {
-        margin: 0 15px;
-        margin-top: 90px;
-    }
-
-    main form.bar-search > button {
-        padding: 5px 10px;
+    main .info p {
+        margin-top: 10px;
     }
 }
 
 @media(max-width: 700px) {
-    main {
-        font-size: .9rem;
-        margin-top: 25px;
-    }
-
     main form.form textarea.form-input {
         height: 200px;
     }
