@@ -3,42 +3,42 @@
 {% use 'components/footer.html' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="public/assets/css/header.css">
-    <link rel="stylesheet" href="public/assets/css/footer.css">
-    <link rel="stylesheet" href="public/assets/css/support.css">
+<link rel="stylesheet" href="public/assets/css/header.css">
+<link rel="stylesheet" href="public/assets/css/footer.css">
+<link rel="stylesheet" href="public/assets/css/support.css">
 {% endblock %}
 {% block body %}
-    {% block header %}{{ parent() }}{% endblock %}
-    <main>
-        <div class="info">
-            <h1>Book Point</h1>
-            <hr>
-            <p id="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi amet, mollitia tempora similique omnis illo ullam
-                ducimus voluptate, exercitationem, cum fugit deserunt minima tenetur aut laborum non vero magni suscipit.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis amet voluptates recusandae dolor,
-                accusantium reprehenderit autem sit exercitationem, id quos voluptatum distinctio. Pariatur debitis hic natus
-                laudantium, perferendis vitae iusto?
-            </p>
-            <div>
-                <p>Contato: (99) 99999-9999</p>
-                <p>E-mail: exemplo@gmail.com</p>
-            </div>
+{% block header %}{{ parent() }}{% endblock %}
+<main>
+    <div class="info">
+        <h1>Book Point</h1>
+        <hr>
+        <p id="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi amet, mollitia tempora similique omnis illo ullam
+            ducimus voluptate, exercitationem, cum fugit deserunt minima tenetur aut laborum non vero magni suscipit.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis amet voluptates recusandae dolor,
+            accusantium reprehenderit autem sit exercitationem, id quos voluptatum distinctio. Pariatur debitis hic natus
+            laudantium, perferendis vitae iusto?
+        </p>
+        <div>
+            <p>Contato: (99) 99999-9999</p>
+            <p>E-mail: exemplo@gmail.com</p>
         </div>
-        <form class="form">
-            <h1>Caso possua alguma dúvida ou queira relatar um problema</h1>
-            <div>
-                <label>E-mail:</label>
-                <input type="email" name="email" class="form-input" placeholder="Insira seu e-mail">
-            </div>
-            <div>
-                <label>Relate seu problema:</label>
-                <textarea rows="10" name="text" class="form-input" placeholder="Insira seu texto..."></textarea>
-            </div>
-            <button type="submit" class="btn-default">Enviar</button>
-        </form>
-    </main>
-    {% block footer %}{{ parent() }}{% endblock %}
+    </div>
+    <form class="form">
+        <h1>Caso possua alguma dúvida ou queira relatar um problema</h1>
+        <div>
+            <label>E-mail:</label>
+            <input type="email" name="email" class="form-input" placeholder="Insira seu e-mail">
+        </div>
+        <div>
+            <label>Relate seu problema:</label>
+            <textarea rows="10" name="text" class="form-input" placeholder="Insira seu texto..."></textarea>
+        </div>
+        <button type="submit" class="btn-default">Enviar</button>
+    </form>
+</main>
+{% block footer %}{{ parent() }}{% endblock %}
 {% endblock%}
 
 {% block javascripts %}{% endblock %}

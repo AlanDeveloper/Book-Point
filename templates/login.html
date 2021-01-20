@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% use 'components/header.html' %}
+{% use 'components/footer.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="public/assets/css/header.css">
+<link rel="stylesheet" href="public/assets/css/footer.css">
+<link rel="stylesheet" href="public/assets/css/login.css">
+{% endblock %}
+{% block body %}
+{% block header %}{{ parent() }}{% endblock %}
+<main>
+    <form action="/login" method="POST" class="form">
+        <h1>Encontre o melhor preço para seus livros favoritos!</h1>
+        <div>
+            <label>E-mail: </label>
+            <input type="email" class="form-input" name="email" placeholder="Insira seu e-mail">
+        </div>
+        <div>
+            <label>Senha: </label>
+            <input type="password" class="form-input" name="password" placeholder="Insira sua senha">
+        </div>
+        <a href="/register">Não possuí uma conta? Cadastre-se</a>
+        <button type="submit" class="btn-default">Entrar</button>
+    </form>
+</main>
+{% block footer %}{{ parent() }}{% endblock %}
+{% endblock%}
+
+{% block javascripts %}{% endblock %}

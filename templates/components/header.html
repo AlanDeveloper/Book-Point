@@ -13,8 +13,8 @@
                         <div class="dropbtn">
                             <a href="#"><i class="icon-user"></i></a>
                             <ul class="dropdown-login">
-                                <li><a href="#">ENTRAR</a></li>
-                                <li><a href="#">CADASTRAR</a></li>
+                                <li><a href="/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
+                                <li><a href="/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
                             </ul>
                         </div>
                     </li>
@@ -27,8 +27,8 @@
                     <li><a href="#">MAIS VENDIDOS</a></li>
                     <li><a href="#">MENOR PREÇO</a></li>
                     <li><a href="/support" class="{% if route == '/support' %} active {% endif %}">SUPORTE</a></li>
-                    <li><a href="#">ENTRAR</a></li>
-                    <li><a href="#">CADASTRAR</a></li>
+                    <li><a href="/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
+                    <li><a href="/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
                 </ul>
                 <div class="mobile right">
                     <a href="#"><i class="icon-cart"></i></a>

@@ -40,6 +40,11 @@ main {
   flex: 1 0 auto;
 }
 
+main form.form div {
+  max-width: 100%;
+  width: 1000px;
+}
+
 main form.form .form-input {
   font-size: 1rem;
   box-sizing: border-box;

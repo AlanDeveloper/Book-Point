@@ -1,0 +1,43 @@
+main form.form div {
+    margin: 30px 0;
+}
+
+main form.form label {
+    font-size: 1rem;
+    color:  #000;
+}
+
+main form.form a {
+    margin-left: 20px;
+    line-height: 42px;
+}
+
+main form.form .form-input {
+    margin-top: 10px;
+}
+
+main form.form .btn-default {
+    float: left;
+    margin-bottom: 50px;
+}
+
+@media(max-width: 450px) {
+    main form.form h1 {
+        margin-bottom: 50px;
+    }
+
+    main form.form a {
+        float: none;
+        display: block;
+        margin-left: 0;
+    }
+
+    main form.form div {
+        margin: 20px 0;
+    }
+
+    main form.form .btn-default {
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+}

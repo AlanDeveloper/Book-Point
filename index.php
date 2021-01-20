@@ -13,4 +13,7 @@ $router->get("/", "Controller:home");
 $router->get("/search", "Controller:search");
 $router->get("/support", "Controller:support");
 
+$router->get("/login", "UserController:login");
+$router->get("/register", "UserController:register");
+
 $router->dispatch();
