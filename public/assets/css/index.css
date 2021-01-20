@@ -37,6 +37,7 @@ main {
   max-width: 1000px;
   margin: auto;
   margin-top: 100px;
+  margin-bottom: 30px;
   flex: 1 0 auto;
 }
 
@@ -72,7 +73,7 @@ main button.btn-default {
   main {
     margin: 0 15px;
     margin-top: 90px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
   }
 
   h1 {
@@ -88,6 +89,7 @@ main button.btn-default {
   main {
     font-size: .95rem;
     margin-top: 25px;
+    margin-bottom: 60px;
   }
 
   h1 {

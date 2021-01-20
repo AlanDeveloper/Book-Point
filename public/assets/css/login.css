@@ -2,9 +2,21 @@ main form.form div {
     margin: 30px 0;
 }
 
+main form.form div.last {
+    margin-bottom: 15px;
+}
+
 main form.form label {
     font-size: 1rem;
     color:  #000;
+}
+
+main form.form small {
+    display: block;
+    padding: 20px 0;
+    padding-top: 10px;
+    font-size: .9rem;
+    color: red;
 }
 
 main form.form a {

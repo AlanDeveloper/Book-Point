@@ -14,6 +14,9 @@ $router->get("/search", "Controller:search");
 $router->get("/support", "Controller:support");
 
 $router->get("/login", "UserController:login");
+$router->post("/login", "UserController:authLogin");
+
 $router->get("/register", "UserController:register");
+$router->post("/register", "UserController:authRegister");
 
 $router->dispatch();

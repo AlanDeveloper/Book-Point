@@ -10,24 +10,29 @@
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}
 <main>
-    <form action="/login" method="POST" class="form">
+    <form action="/register" method="POST" class="form">
         <h1>Encontre o melhor preço para seus livros favoritos!</h1>
         <div>
             <label>Nome: </label>
-            <input type="text" class="form-input" name="name" placeholder="Insira seu nome">
+            <input type="text" class="form-input" name="name" maxlength="50" placeholder="Insira seu nome"
+            value="{% if form['name']  %} {{ form['name'] }} {% endif %}">
         </div>
         <div>
             <label>E-mail: </label>
-            <input type="email" class="form-input" name="email" placeholder="Insira seu e-mail">
+            <input type="email" class="form-input" name="email" maxlength="255" placeholder="Insira seu e-mail"
+            value="{% if form['email']  %} {{ form['email'] }} {% endif %}">
         </div>
         <div>
             <label>Senha: </label>
-            <input type="password" class="form-input" name="password" placeholder="Insira sua senha">
+            <input type="password" class="form-input" name="password" minlength="6" maxlength="50" placeholder="Insira sua senha">
         </div>
-        <div>
+        <div class="last">
             <label>Repita sua senha: </label>
-            <input type="password" class="form-input" name="repassword" placeholder="Insira novamente sua senha">
+            <input type="password" class="form-input" name="repassword" minlength="6" maxlength="50" placeholder="Insira novamente sua senha">
         </div>
+        <small>
+            {% if error %}{{ error }}{% endif %}
+        </small>
         <a href="/login">Possuí uma conta? Conecte-se</a>
         <button type="submit" class="btn-default">Cadastrar-se</button>
     </form>
