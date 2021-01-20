@@ -2,7 +2,11 @@
 
 namespace MyApp\Controllers;
 
+use MyApp\Models\UserModel;
+
 class UserController extends Controller {
+
+    protected $user_model;
 
     protected function verifyForm()
     {
@@ -24,6 +28,11 @@ class UserController extends Controller {
         }
 
         return '';
+    }
+
+    public function __construct()
+    {
+        $this->user_model = new UserModel();
     }
 
     public function login()
@@ -57,7 +66,7 @@ class UserController extends Controller {
     {
         $error = $this->verifyForm();
         if($error == '') {
-            echo 'Vou te cadastrar';
+            $this->user_model->save();
         } else {
             $this->load('register', [
                 'form' => [
