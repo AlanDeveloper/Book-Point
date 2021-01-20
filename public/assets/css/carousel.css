@@ -23,7 +23,7 @@ main .gallery-cell#img2 {
 main .gallery-cell.card {
     box-shadow: none;
     border: 1px solid var(--text-silver);
-    width: 25%;
+    width: 23%;
     height: 460px;
     padding: 10px;
 }
@@ -73,12 +73,7 @@ main .gallery-cell.card p.price {
 
 main .gallery-cell.card button {
     width: 100px;
-    padding: 10px;
-    font-size: 16px;
-    color: var(--text-active);
-    border: none;
     margin-top: 20px;
-    background-color: var(--color-secondary);
 }
 
 @media(max-width: 1000px) {

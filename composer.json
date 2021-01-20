@@ -8,9 +8,6 @@
             "email": "alanssantos32@gmail.com"
         }
     ],
-    "scripts": {
-        "start": "php -S localhost:2000"
-    },
     "config": {
         "process-timeout": 0
     },

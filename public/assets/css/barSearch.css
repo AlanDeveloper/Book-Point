@@ -1,45 +1,19 @@
-main form.bar-search {
+main form.form {
     display: flex;
 }
 
-main form.bar-search input[type=search] {
+main form.form input[type=search] {
     width: 1000px;
-    color: var(--text-silver);
-    margin: 0;
-    padding: 5px 25px;
-    border: 2px solid #ccc;
     border-right: 0;
 }
 
-main form.bar-search input[type=search]:focus {
-    box-shadow: none;
-    border: 2px solid #ccc;
+main form.form input[type=search]:focus {
     border-right: 0;
 }
 
-main form.bar-search > button {
+main form.form > button {
     padding: 10px 20px;
     border: 2px solid var(--color-primary);
     color: var(--color-primary);
     background-color: transparent;
-}
-
-@media(max-width: 1000px) {
-    main form.bar-search input[type=search] {
-        padding: 5px 20px;
-    }
-
-    main form.bar-search > button {
-        padding: 5px 10px;
-    }
-}
-
-@media(max-width: 700px) {
-    main form.bar-search input[type=search] {
-        padding: 2px 15px;
-    }
-
-    main form.bar-search > button {
-        padding: 2px 5px;
-    }
 }

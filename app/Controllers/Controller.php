@@ -21,4 +21,9 @@ class Controller {
     {
         $this->load("search", ["query" => $_GET["query"]]);
     }
+    
+    public function support()
+    {
+        $this->load("support");
+    }
 }
