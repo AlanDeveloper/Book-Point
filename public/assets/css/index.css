@@ -2,12 +2,10 @@
   --color-primary: #022B3A;
   --color-secondary: #1F7A8C;
 
-  --color-silver: #777777;
-  
-  /* TEXT COLORS */
-  --text-silver: #C4C4C4;
-  --text-active: #ffffff;
-  --text-green: #1E7200;
+  --color-silver-strong: #777777;
+  --color-silver: #C4C4C4;
+  --color-active: #ffffff;
+  --color-green: #1E7200;
 }
 
 @font-face {
@@ -35,14 +33,70 @@ h1 {
   margin-bottom: 15px;
 }
 
+main {
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  flex: 1 0 auto;
+}
+
+main form.form div {
+  max-width: 100%;
+  width: 1000px;
+}
+
+main form.form .form-input {
+  font-size: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--color-primary);
+  margin: 0;
+  padding: 25px;
+  outline: 0;
+  border: 2px solid var(--color-silver);
+}
+
+main form.form .form-input:focus {
+  box-shadow: none;
+  border: 2px solid var(--color-silver);
+}
+
+main button.btn-default {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
 @media(max-width: 1000px) {
+  main {
+    margin: 0 15px;
+    margin-top: 90px;
+    margin-bottom: 30px;
+  }
+
   h1 {
     font-size: 1.7rem;
+  }
+
+  main form.form .form-input {
+    padding: 5px 20px;
   }
 }
 
 @media(max-width: 700px) {
+  main {
+    font-size: .95rem;
+    margin-top: 25px;
+    margin-bottom: 60px;
+  }
+
   h1 {
     font-size: 1.5rem;
+  }
+
+  main form.form .form-input, main button.btn-default {
+    font-size: .95rem;
   }
 }

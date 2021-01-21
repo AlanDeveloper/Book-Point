@@ -2,34 +2,33 @@
     <header>
         <nav>
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo">BookPoint</a>
+                <a href="{{ base_url }}/" class="brand-logo">BookPoint</a>
                 <div class="mobile left">
                     <a href="#" data-activates="menu-mobile" class="button-collapse"><i class="icon-menu"></i></a>
                 </div>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="/" class="active">Início</a></li>
-                    <li><a href="#">Suporte</a></li>
-                    <!-- <li><a href="#"><i class="icon-user"></i></a></li> -->
+                    <li><a href="{{ base_url }}/" class="{% if route == '/' or route == '/search' %} active {% endif %}">Início</a></li>
+                    <li><a href="{{ base_url }}/support" class="{% if route == '/support' %} active {% endif %}">Suporte</a></li>
                     <li>
                         <div class="dropbtn">
                             <a href="#"><i class="icon-user"></i></a>
                             <ul class="dropdown-login">
-                                <li><a href="#">ENTRAR</a></li>
-                                <li><a href="#">CADASTRAR</a></li>
+                                <li><a href="{{ base_url }}/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
+                                <li><a href="{{ base_url }}/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
                             </ul>
                         </div>
                     </li>
                     <li><a href="#" class="p-right"><i class="icon-cart"></i></a></li>
                 </ul>
                 <ul class="side-nav" id="menu-mobile">
-                    <li><a href="/" class="active">INÍCIO</a></li>
+                    <li><a href="{{ base_url }}/" class="{% if route == '/' or route == '/search' %} active {% endif %}">INÍCIO</a></li>
                     <li><a href="#">TODAS AS CATEGORIAS</a></li>
                     <li><a href="#">MELHORES PROMOÇÕES</a></li>
                     <li><a href="#">MAIS VENDIDOS</a></li>
                     <li><a href="#">MENOR PREÇO</a></li>
-                    <li><a href="#">SUPORTE</a></li>
-                    <li><a href="#">ENTRAR</a></li>
-                    <li><a href="#">CADASTRAR</a></li>
+                    <li><a href="{{ base_url }}/support" class="{% if route == '/support' %} active {% endif %}">SUPORTE</a></li>
+                    <li><a href="{{ base_url }}/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
+                    <li><a href="{{ base_url }}/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
                 </ul>
                 <div class="mobile right">
                     <a href="#"><i class="icon-cart"></i></a>

@@ -22,8 +22,8 @@ main .gallery-cell#img2 {
 
 main .gallery-cell.card {
     box-shadow: none;
-    border: 1px solid var(--text-silver);
-    width: 25%;
+    border: 1px solid var(--color-silver);
+    width: 23%;
     height: 460px;
     padding: 10px;
 }
@@ -62,23 +62,18 @@ main .gallery-cell.card p.title {
 }
 
 main .gallery-cell.card p.subtitle {
-    color: var(--color-silver);
+    color: var(--color-silver-strong);
     font-size: 16px;
 }
 
 main .gallery-cell.card p.price {
-    color: var(--text-green);
+    color: var(--color-green);
     font-size: 20px;
 }
 
 main .gallery-cell.card button {
     width: 100px;
-    padding: 10px;
-    font-size: 16px;
-    color: var(--text-active);
-    border: none;
     margin-top: 20px;
-    background-color: var(--color-secondary);
 }
 
 @media(max-width: 1000px) {

@@ -8,22 +8,18 @@
             "email": "alanssantos32@gmail.com"
         }
     ],
-    "scripts": {
-        "start": "php -S localhost:2000"
-    },
     "config": {
         "process-timeout": 0
     },
     "autoload": {
         "psr-4": {
             "MyApp\\": "app/"
-        },
-        "files": [
-            "app/Config.php"
-        ]
+        }
     },
     "require": {
         "coffeecode/router": "^1.0",
-        "twig/twig": "^3.2"
+        "twig/twig": "^3.2",
+        "csanquer/pdo-service-provider": "~1.1dev",
+        "vlucas/phpdotenv": "^5.3"
     }
 }
