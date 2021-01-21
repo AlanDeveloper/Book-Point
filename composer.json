@@ -22,6 +22,6 @@
     "require": {
         "coffeecode/router": "^1.0",
         "twig/twig": "^3.2",
-        "csanquer/pdo-service-provider=~1.1dev"
+        "csanquer/pdo-service-provider": "~1.1dev"
     }
 }
