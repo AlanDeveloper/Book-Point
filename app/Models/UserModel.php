@@ -22,19 +22,52 @@ class UserModel extends Model {
         $conn = $this->connect();
         $query = $conn->prepare($sql);
         $query->execute($array);
+
+        return $query;
     }
 
     public function save()
     {
-        $obj = $this->create_obj();
-        $sql = 'INSERT INTO "user" (name, email, password) VALUES (?, ?, ?)';
-        $array = array(
-            $obj->getName(),
-            $obj->getEmail(),
-            MD5($obj->getPassword())
-        );
-        $this->query($sql, $array);
+        if(!$this->findEmail()) {
 
-        echo 'ola';
+            $obj = $this->create_obj();
+            $sql = 'INSERT INTO "user" (name, email, password) VALUES (?, ?, ?)';
+            $array = array(
+                $obj->getName(),
+                $obj->getEmail(),
+                MD5($obj->getPassword())
+            );
+            $this->query($sql, $array);
+    
+            echo 'iniciar sessão';
+            return '';
+        } else { return 'O e-mail que você digitou já foi cadastrado.'; }
+    }
+
+    public function auth()
+    {
+        $sql = 'SELECT * FROM "user" WHERE email = ? AND password = ?';
+        $array = array(
+            $_POST['email'],
+            MD5($_POST['password'])
+        );
+
+        $result = $this->query($sql, $array);
+        if($result->rowCount() == 1){
+            $info = $result->fetch();
+            echo 'iniciar sessão';
+            return '';
+        } else {
+            return $this->findEmail() ? 'A senha que você digitou está incorreta.' : 'Os dados que você digitou estão incorretos.';
+        }
+    }
+
+    public function findEmail()
+    {
+        $sql = 'SELECT * FROM "user" WHERE email = ?';
+        $array = array($_POST['email']);
+
+        $result = $this->query($sql, $array);
+        return $result->rowCount() == 1 ? true : false;
     }
 }

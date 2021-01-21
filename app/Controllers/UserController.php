@@ -8,6 +8,11 @@ class UserController extends Controller {
 
     protected $user_model;
 
+    public function __construct()
+    {
+        $this->user_model = new UserModel();
+    }
+
     protected function verifyForm()
     {
         if(!(strlen($_POST['email']) <= 255)) {
@@ -30,9 +35,15 @@ class UserController extends Controller {
         return '';
     }
 
-    public function __construct()
+    protected function loadErrors($page, $error)
     {
-        $this->user_model = new UserModel();
+        $this->load($page, [
+        'form' => [
+                'name' => isset($_POST['name']) ?  $_POST['name'] : '',
+                'email' => $_POST['email']
+            ],
+            'error' => $error
+        ]);
     }
 
     public function login()
@@ -44,16 +55,11 @@ class UserController extends Controller {
     {
         $error = $this->verifyForm();
         if($error == '') {
-            echo 'Vou verificar seu login';
+
+            $result = $this->user_model->auth();
+            $result != '' ? $this->loadErrors('login', $result) :  null;
         } else {
-            $this->load('login', [
-                'form' => [
-                    'name' => isset($_POST['name']) ?  $_POST['name'] : '',
-                    'email' => $_POST['email'],
-                    'password' => $_POST['password']
-                ],
-                'error' => $error
-            ]);
+            $this->loadErrors('login', $error);
         }
     }
     
@@ -66,16 +72,11 @@ class UserController extends Controller {
     {
         $error = $this->verifyForm();
         if($error == '') {
-            $this->user_model->save();
+
+            $result = $this->user_model->save();
+            $result != '' ? $this->loadErrors('register', $result) :  null;
         } else {
-            $this->load('register', [
-                'form' => [
-                    'name' => isset($_POST['name']) ?  $_POST['name'] : '',
-                    'email' => $_POST['email'],
-                    'password' => $_POST['password']
-                ],
-                'error' => $error
-            ]);
+            $this->loadErrors('register', $error);
         }
     }
 }
