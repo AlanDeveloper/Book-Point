@@ -22,6 +22,7 @@ class UserModel extends Model {
         $conn = $this->connect();
         $query = $conn->prepare($sql);
         $query->execute($array);
+        $conn = null;
 
         return $query;
     }
@@ -38,9 +39,8 @@ class UserModel extends Model {
                 MD5($obj->getPassword())
             );
             $this->query($sql, $array);
-    
-            echo 'iniciar sessão';
-            return '';
+            
+            return $this->auth();
         } else { return 'O e-mail que você digitou já foi cadastrado.'; }
     }
 
@@ -54,9 +54,8 @@ class UserModel extends Model {
 
         $result = $this->query($sql, $array);
         if($result->rowCount() == 1){
-            $info = $result->fetch();
-            echo 'iniciar sessão';
-            return '';
+            $obj = $this->create_obj($result->fetch());
+            return $obj;
         } else {
             return $this->findEmail() ? 'A senha que você digitou está incorreta.' : 'Os dados que você digitou estão incorretos.';
         }
@@ -69,5 +68,17 @@ class UserModel extends Model {
 
         $result = $this->query($sql, $array);
         return $result->rowCount() == 1 ? true : false;
+    }
+
+    public function find($obj)
+    {
+        $sql = 'SELECT * FROM "user" WHERE email = ? AND password = ?';
+        $array = array(
+            $obj->getEmail(),
+            $obj->getPassword()
+        );
+
+        $result = $this->query($sql, $array);
+        return $result->fetch();
     }
 }

@@ -8,6 +8,7 @@ class Controller {
     {
         $loader = new \Twig\Loader\FilesystemLoader(['public', 'templates']);
         $twig = new \Twig\Environment($loader);
+        $twig->addGlobal('session', $_SESSION);
 
         $params = array_merge($params, [
             "route" => explode("?", $_SERVER["REQUEST_URI"])[0],

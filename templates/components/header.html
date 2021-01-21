@@ -12,10 +12,20 @@
                     <li>
                         <div class="dropbtn">
                             <a href="#"><i class="icon-user"></i></a>
-                            <ul class="dropdown-login">
-                                <li><a href="{{ base_url }}/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
-                                <li><a href="{{ base_url }}/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
-                            </ul>
+                            {% if session.logged %}
+                                <ul class="dropdown-login" style="min-width: 150px;">
+                                    {% if session.admi %}
+                                        <li><a href="{{ base_url }}/#">ÁREA ADMINISTRATIVA</a></li>
+                                    {% endif %}
+                                    <li><a href="{{ base_url }}/#">EDITAR PERFIL</a></li>
+                                    <li><a href="{{ base_url }}/loggout">SAIR</a></li>
+                                </ul>
+                            {% else %}
+                                <ul class="dropdown-login">
+                                    <li><a href="{{ base_url }}/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
+                                    <li><a href="{{ base_url }}/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
+                                </ul>
+                            {% endif %}
                         </div>
                     </li>
                     <li><a href="#" class="p-right"><i class="icon-cart"></i></a></li>

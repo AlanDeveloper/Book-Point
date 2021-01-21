@@ -4,6 +4,9 @@ require_once __DIR__."/vendor/autoload.php";
 
 use CoffeeCode\Router\Router;
 
+
+session_start();
+
 // LOAD ENV
 if(file_exists(".env")) {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -26,5 +29,7 @@ $router->post("/login", "UserController:authLogin");
 
 $router->get("/register", "UserController:register");
 $router->post("/register", "UserController:authRegister");
+
+$router->get("/loggout", "UserController:loggout");
 
 $router->dispatch();

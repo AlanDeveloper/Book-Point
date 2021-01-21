@@ -46,6 +46,15 @@ class UserController extends Controller {
         ]);
     }
 
+    protected function startSession($obj) {
+        $_SESSION['logged'] = true;
+        $_SESSION['name'] = $obj->getName();
+        $_SESSION['email'] = $obj->getEmail();
+        $_SESSION['password'] = $obj->getPassword();
+        $_SESSION['id'] = $obj->getId();
+        $_SESSION['admin'] = $obj->getAdmin();
+    }
+
     public function login()
     {
         $this->load('login');
@@ -57,10 +66,12 @@ class UserController extends Controller {
         if($error == '') {
 
             $result = $this->user_model->auth();
-            $result != '' ? $this->loadErrors('login', $result) :  null;
+            gettype($result) != 'object' ? $this->loadErrors('login', $result) :  $this->startSession($result);
         } else {
             $this->loadErrors('login', $error);
         }
+
+        $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
     }
     
     public function register()
@@ -74,9 +85,17 @@ class UserController extends Controller {
         if($error == '') {
 
             $result = $this->user_model->save();
-            $result != '' ? $this->loadErrors('register', $result) :  null;
+            gettype($result) != 'object' ? $this->loadErrors('register', $result) :  $this->startSession($result);
         } else {
             $this->loadErrors('register', $error);
         }
+
+        $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
+    }
+
+    public function loggout()
+    {
+        session_unset();
+        header('Location: '. strval($_ENV['BASE_URL']) .'/');
     }
 }
