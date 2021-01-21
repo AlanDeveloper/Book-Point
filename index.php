@@ -9,7 +9,8 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // ROUTES
-$router = new Router($_ENV['BASE_URL']);
+$base_url = strval($_ENV['BASE_URL']);
+$router = new Router($base_url);
 
 $router->namespace("MyApp\Controllers");
 
