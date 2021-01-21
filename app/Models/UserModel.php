@@ -34,5 +34,7 @@ class UserModel extends Model {
             MD5($obj->getPassword())
         );
         $this->query($sql, $array);
+
+        echo 'ola';
     }
 }
