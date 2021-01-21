@@ -10,7 +10,7 @@ $dotenv->load();
 
 // ROUTES
 $base_url = strval($_ENV['BASE_URL']);
-$router = new Router($base_url);
+$router = new Router(BASE_URL);
 
 $router->namespace("MyApp\Controllers");
 
