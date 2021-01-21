@@ -5,8 +5,10 @@ require_once __DIR__."/vendor/autoload.php";
 use CoffeeCode\Router\Router;
 
 // LOAD ENV
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+if(file_exists(".env")) {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+}
 
 // ROUTES
 $base_url = strval($_ENV['BASE_URL']);
