@@ -19,6 +19,7 @@
     "require": {
         "coffeecode/router": "^1.0",
         "twig/twig": "^3.2",
-        "vlucas/phpdotenv": "^5.3"
+        "vlucas/phpdotenv": "^5.3",
+        "cba85/dotenv-heroku-converter": "^1.0"
     }
 }

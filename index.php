@@ -6,8 +6,10 @@ use CoffeeCode\Router\Router;
 use Dotenv\Dotenv;
 
 // LOAD ENV
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+if (file_exists(__DIR__ . '/.env')) {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+}
 
 // ROUTES
 $base_url = strval($_ENV['BASE_URL']);

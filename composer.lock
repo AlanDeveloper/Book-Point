@@ -4,8 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d220be70c7aba7851d3db6beb42db18c",
+    "content-hash": "59e0aedbf008b008537fe511d8b35189",
     "packages": [
+        {
+            "name": "cba85/dotenv-heroku-converter",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cba85/dotenv-heroku-converter.git",
+                "reference": "942d02142f04ec02d12a54e4aafcdfe8b56141e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cba85/dotenv-heroku-converter/zipball/942d02142f04ec02d12a54e4aafcdfe8b56141e7",
+                "reference": "942d02142f04ec02d12a54e4aafcdfe8b56141e7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1"
+            },
+            "bin": [
+                "dotenv-heroku-converter"
+            ],
+            "type": "application",
+            "autoload": {
+                "psr-4": {
+                    "Dotenv\\Heroku\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Clément Barbaza",
+                    "email": "hello@clementbarbaza.com",
+                    "homepage": "https://clementbarbaza.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Convert php .env environment variables in Heroku environment variables",
+            "homepage": "https://github.com/cba85/dotenv-heroku-converter",
+            "keywords": [
+                "dotenv",
+                "heroku",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/cba85/dotenv-heroku-converter/issues",
+                "source": "https://github.com/cba85/dotenv-heroku-converter/tree/master"
+            },
+            "time": "2018-02-09T15:50:15+00:00"
+        },
         {
             "name": "coffeecode/router",
             "version": "1.0.7",
