@@ -10,8 +10,11 @@ class Controller {
         $twig = new \Twig\Environment($loader);
         $twig->addGlobal('session', $_SESSION);
 
+        $protocolo = (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off') ? 'http' : 'https';
+        $url = explode($_ENV['BASE_URL'], "$protocolo://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+
         $params = array_merge($params, [
-            "route" => explode("?", $_SERVER["REQUEST_URI"])[0],
+            "route" => $url[1],
             "base_url" => $_ENV['BASE_URL']
         ]); 
 

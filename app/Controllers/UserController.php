@@ -13,22 +13,25 @@ class UserController extends Controller {
         $this->user_model = new UserModel();
     }
 
-    protected function verifyForm()
+    protected function verifyForm($request_password = true, $to_compare = true)
     {
         if(!(strlen($_POST['email']) <= 255)) {
             return 'Campo e-mail não está no tamanho especificado.';
         }
-        if(!(strlen($_POST['password']) >= 6 and strlen($_POST['password']) <= 50)) {
-            return 'Campo senha não está no tamanho especificado.';
-        }
-        if(isset($_POST['repassword'])) {
-            if(!($_POST['repassword'] == $_POST['password'])) {
-                return 'Campos senhas não possuem a mesma senha.';
-            }
-        }
         if(isset($_POST['name'])) {
             if(!(strlen($_POST['name']) <= 50)) {
                 return 'Campo nome não está no tamanho especificado.';
+            }
+        }
+        if($request_password) {
+
+            if(!(strlen($_POST['password']) >= 6 and strlen($_POST['password']) <= 50)) {
+                return 'Campo senha não está no tamanho especificado.';
+            }
+            if(isset($_POST['repassword']) and $to_compare) {
+                if(!($_POST['repassword'] == $_POST['password'])) {
+                    return 'Campos senhas não possuem a mesma senha.';
+                }
             }
         }
 
@@ -85,7 +88,7 @@ class UserController extends Controller {
         $error = $this->verifyForm();
         if($error == '') {
 
-            $result = $this->user_model->save();
+            $result = $this->user_model->insert();
             if (gettype($result) == 'object') {
                 $this->startSession($result);
                 $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
@@ -103,7 +106,17 @@ class UserController extends Controller {
 
     public function saveProfile()
     {
-        echo 'vamos salvar';
+        $error = $_POST['repassword'] != '' ? $this->verifyForm(true, false) : $this->verifyForm(false, false);
+        if($error == '') {
+
+            $result = $this->user_model->save();
+            if (gettype($result) == 'object') {
+                $this->startSession($result);
+                $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
+            } else { $this->loadErrors('editProfile', $result); }
+        } else {
+            $this->loadErrors('register', $error);
+        }
     }
 
     public function deleteProfile()

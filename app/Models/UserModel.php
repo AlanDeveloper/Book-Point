@@ -27,7 +27,7 @@ class UserModel extends Model {
         return $query;
     }
 
-    public function save()
+    public function insert()
     {
         if(!$this->findEmail()) {
 
@@ -42,6 +42,45 @@ class UserModel extends Model {
             
             return $this->auth();
         } else { return 'O e-mail que você digitou já foi cadastrado.'; }
+    }
+
+    public function save()
+    {
+        $obj = $this->create_obj();
+        $isValidEmail = $_SESSION['email'] == $obj->getEmail();
+        if(isset($_POST['password'])) {
+            $isValidPassword = $_SESSION['password'] == $obj->getPassword();
+            if(!$isValidPassword) {
+                return 'A senha que você digitou está incorreta.';
+            }
+        }
+        if(!$isValidEmail) {
+            if($this->findEmail()) {
+                return 'O e-mail que você digitou já foi cadastrado.';
+            } else {
+                $sql = 'UPDATE "user" SET name = ?, email = ?, password = ? WHERE id = ?';
+                $array = array(
+                    $obj->getName(),
+                    $obj->getEmail(),
+                    MD5($obj->getPassword()),
+                    $obj->getId()
+                );
+                $this->query($sql, $array);
+        
+                return $obj;
+            }
+        } else {
+            $sql = 'UPDATE "user" SET name = ?, password = ? WHERE id = ?';
+            $array = array(
+                $obj->getName(),
+                MD5($obj->getPassword()),
+                $obj->getId()
+            );
+            $this->query($sql, $array);
+    
+            return $obj;
+        }
+
     }
 
     public function auth()

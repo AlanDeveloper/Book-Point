@@ -7,7 +7,7 @@
                     <a href="#" data-activates="menu-mobile" class="button-collapse"><i class="icon-menu"></i></a>
                 </div>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ base_url }}/" class="{% if route == '/' or route == '/search' %} active {% endif %}">Início</a></li>
+                    <li><a href="{{base_url}}/" class="{% if route == '/' %} active {% endif %}">Início</a></li>
                     <li><a href="{{ base_url }}/support" class="{% if route == '/support' %} active {% endif %}">Suporte</a></li>
                     <li>
                         <div class="dropbtn">
@@ -31,7 +31,7 @@
                     <li><a href="#" class="p-right"><i class="icon-cart"></i></a></li>
                 </ul>
                 <ul class="side-nav" id="menu-mobile">
-                    <li><a href="{{ base_url }}/" class="{% if route == '/' or route == '/search' %} active {% endif %}">INÍCIO</a></li>
+                    <li><a href="{{ base_url }}/" class="{% if route == '/' %} active {% endif %}">INÍCIO</a></li>
                     <li><a href="#">TODAS AS CATEGORIAS</a></li>
                     <li><a href="#">MELHORES PROMOÇÕES</a></li>
                     <li><a href="#">MAIS VENDIDOS</a></li>
