@@ -14,10 +14,10 @@
                             <a href="#"><i class="icon-user"></i></a>
                             {% if session.logged %}
                                 <ul class="dropdown-login" style="min-width: 150px;">
-                                    {% if session.admi %}
-                                        <li><a href="{{ base_url }}/#">ÁREA ADMINISTRATIVA</a></li>
+                                    {% if session.admin %}
+                                        <li><a href="{{ base_url }}/#" class="{% if route == '/login' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
                                     {% endif %}
-                                    <li><a href="{{ base_url }}/#">EDITAR PERFIL</a></li>
+                                    <li><a href="{{ base_url }}/editProfile" class="{% if route == '/editProfile' %} active {% endif %}">EDITAR PERFIL</a></li>
                                     <li><a href="{{ base_url }}/loggout">SAIR</a></li>
                                 </ul>
                             {% else %}
@@ -37,8 +37,16 @@
                     <li><a href="#">MAIS VENDIDOS</a></li>
                     <li><a href="#">MENOR PREÇO</a></li>
                     <li><a href="{{ base_url }}/support" class="{% if route == '/support' %} active {% endif %}">SUPORTE</a></li>
-                    <li><a href="{{ base_url }}/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
-                    <li><a href="{{ base_url }}/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
+                    {% if session.logged %}
+                        {% if session.admin %}
+                            <li><a href="{{ base_url }}/#" class="{% if route == '/login' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
+                        {% endif %}
+                        <li><a href="{{ base_url }}/editProfile" class="{% if route == '/editProfile' %} active {% endif %}">EDITAR PERFIL</a></li>
+                        <li><a href="{{ base_url }}/loggout">SAIR</a></li>
+                    {% else %}
+                        <li><a href="{{ base_url }}/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
+                        <li><a href="{{ base_url }}/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
+                    {% endif %}
                 </ul>
                 <div class="mobile right">
                     <a href="#"><i class="icon-cart"></i></a>

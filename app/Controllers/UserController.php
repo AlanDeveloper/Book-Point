@@ -93,6 +93,17 @@ class UserController extends Controller {
         $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
     }
 
+    public function editProfile()
+    {
+        $this->load('editProfile');
+    }
+
+    public function deleteProfile()
+    {
+        $this->user_model->delete();
+        $this->loggout();
+    }
+
     public function loggout()
     {
         session_unset();

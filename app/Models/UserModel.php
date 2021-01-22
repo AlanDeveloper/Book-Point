@@ -61,6 +61,14 @@ class UserModel extends Model {
         }
     }
 
+    public function delete()
+    {
+        $sql = 'DELETE FROM "user" WHERE id = ?';
+        $array = array($_SESSION['id']);
+
+        $result = $this->query($sql, $array);
+    }
+
     public function findEmail()
     {
         $sql = 'SELECT * FROM "user" WHERE email = ?';

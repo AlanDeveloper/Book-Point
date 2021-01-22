@@ -5,6 +5,7 @@ require_once __DIR__."/vendor/autoload.php";
 use CoffeeCode\Router\Router;
 
 
+// START SESSION
 session_start();
 
 // LOAD ENV
@@ -30,6 +31,10 @@ $router->post("/login", "UserController:authLogin");
 $router->get("/register", "UserController:register");
 $router->post("/register", "UserController:authRegister");
 
+$router->get("/editProfile", "UserController:editProfile");
+// $router->post("/editProfile", "UserController:editProfile");
+
 $router->get("/loggout", "UserController:loggout");
+$router->get("/deleteProfile", "UserController:deleteProfile");
 
 $router->dispatch();
