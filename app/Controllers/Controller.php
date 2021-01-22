@@ -9,7 +9,6 @@ class Controller {
         $loader = new \Twig\Loader\FilesystemLoader(['public', 'templates']);
         $twig = new \Twig\Environment($loader);
         $twig->addGlobal('session', $_SESSION);
-        $_SESSION['logged'] = isset($_SESSION['logged']) ? true : false;
 
         $params = array_merge($params, [
             "route" => explode("?", $_SERVER["REQUEST_URI"])[0],

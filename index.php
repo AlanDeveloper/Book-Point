@@ -32,7 +32,7 @@ $router->get("/register", "UserController:register");
 $router->post("/register", "UserController:authRegister");
 
 $router->get("/editProfile", "UserController:editProfile");
-// $router->post("/editProfile", "UserController:editProfile");
+$router->post("/editProfile", "UserController:saveProfile");
 
 $router->get("/loggout", "UserController:loggout");
 $router->get("/deleteProfile", "UserController:deleteProfile");

@@ -66,12 +66,13 @@ class UserController extends Controller {
         if($error == '') {
 
             $result = $this->user_model->auth();
-            gettype($result) != 'object' ? $this->loadErrors('login', $result) :  $this->startSession($result);
+            if (gettype($result) == 'object') {
+                $this->startSession($result);
+                $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
+            } else { $this->loadErrors('login', $result); }
         } else {
             $this->loadErrors('login', $error);
         }
-
-        $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
     }
     
     public function register()
@@ -85,17 +86,24 @@ class UserController extends Controller {
         if($error == '') {
 
             $result = $this->user_model->save();
-            gettype($result) != 'object' ? $this->loadErrors('register', $result) :  $this->startSession($result);
+            if (gettype($result) == 'object') {
+                $this->startSession($result);
+                $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
+            } else { $this->loadErrors('register', $result); }
         } else {
             $this->loadErrors('register', $error);
         }
 
-        $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
     }
 
     public function editProfile()
     {
         $this->load('editProfile');
+    }
+
+    public function saveProfile()
+    {
+        echo 'vamos salvar';
     }
 
     public function deleteProfile()
