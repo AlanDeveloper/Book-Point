@@ -39,7 +39,7 @@
                 <td>{{obj.amount}}</td>
                 <td>R$ {{obj.price}}</td>
                 <td class="buttons"><a href="#"><i class="icon-pencil"></i></a></td>
-                <td class="buttons"><a href="#"><i class="icon-trash"></i></a></td>
+                <td class="buttons"><a href="{{base_url}}/deleteBook/{{obj.id}}"><i class="icon-trash"></i></a></td>
             </tr>
             {% endfor %}
             {%if objs | length == 0 %}

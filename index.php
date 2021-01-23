@@ -38,5 +38,6 @@ $router->get("/loggout", "UserController:loggout");
 $router->get("/deleteProfile", "UserController:deleteProfile");
 
 $router->get("/administrative", "BookController:administrative");
+$router->get("/deleteBook/{id}", "BookController:deleteBook");
 
 $router->dispatch();

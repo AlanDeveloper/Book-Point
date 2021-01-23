@@ -16,10 +16,12 @@ class BookController extends Controller {
     public function administrative()
     {
         $objs = $this->book_model->findAll();
-        // foreach($objs as $obj) {
-        //     echo $obj['name'];
-        // } 
-        // var_dump($objs);
         $this->load('administrative', ['objs' => $objs]);
+    }
+
+    public function deleteBook($data)
+    {
+        $this->book_model->delete($data['id']);
+        header('Location: '. strval($_ENV['BASE_URL']) .'/administrative');
     }
 }

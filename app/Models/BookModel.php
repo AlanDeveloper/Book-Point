@@ -21,4 +21,12 @@ class BookModel extends Model {
         $result = $this->query($sql);
         return $result->fetchAll();
     }
+
+    public function delete($id)
+    {
+        $sql = 'DELETE FROM "book" WHERE id = ?';
+        $array = array($id);
+
+        $result = $this->query($sql, $array);
+    }
 }
