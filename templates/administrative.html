@@ -19,7 +19,7 @@
     <div class="category">
         <h1>Área administrativa</h1>
         <hr>
-        <button class="btn-default"><a href="">Adicionar livro</a></button>
+        <button class="btn-default"><a href="{{base_url}}/addBook">Adicionar livro</a></button>
     </div>
     <table>
         <thead>
@@ -35,11 +35,11 @@
         <tbody>
             {% for obj in objs %}
             <tr>
-                <td>{{obj.name}}</td>
-                <td>{{obj.amount}}</td>
-                <td>R$ {{obj.price}}</td>
+                <td>{{attribute(obj, 'getName')}}</td>
+                <td>{{attribute(obj, 'getAmount')}}</td>
+                <td>R$ {{attribute(obj, 'getPrice')}}</td>
                 <td class="buttons"><a href="#"><i class="icon-pencil"></i></a></td>
-                <td class="buttons"><a href="{{base_url}}/deleteBook/{{obj.id}}"><i class="icon-trash"></i></a></td>
+                <td class="buttons"><a href="{{base_url}}/deleteBook/{{attribute(obj, 'getId')}}"><i class="icon-trash"></i></a></td>
             </tr>
             {% endfor %}
             {%if objs | length == 0 %}

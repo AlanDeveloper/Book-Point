@@ -1,0 +1,68 @@
+{% extends 'index.html' %}
+{% use 'components/header.html' %}
+{% use 'components/footer.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="public/assets/css/header.css">
+<link rel="stylesheet" href="public/assets/css/footer.css">
+<link rel="stylesheet" href="public/assets/css/login.css">
+{% endblock %}
+{% block body %}
+{% block header %}{{ parent() }}{% endblock %}
+<main>
+    <form action="{{ base_url }}/addBook" method="POST" class="form">
+        <h1>Área administrativa</h1>
+        <hr>
+        <div>
+            <label>Nome: </label>
+            <input type="text" class="form-input" name="name" maxlength="50" placeholder="Insira o nome do livro">
+        </div>
+        <div>
+            <label>Author: </label>
+            <input type="text" class="form-input" name="author" maxlength="50" placeholder="Insira o nome do author">
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <label>Quantidade: </label>
+                <input type="number" class="form-input" name="amount" placeholder="Ex: 999">
+            </div>
+            <div class="input-field col s6">
+                <label>Preço(R$): </label>
+                <input type="number" class="form-input" name="price" placeholder="Ex: 24.50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <label>Idioma: </label>
+                <input type="text" class="form-input" name="language" placeholder="Selecione uma opção">
+            </div>
+            <div class="input-field col s6">
+                <label>Gênero: </label>
+                <input type="text" class="form-input" name="genre" placeholder="Selecione uma opção">
+            </div>
+        </div>
+        <div>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" name="image" placeholder="Upload one or more files">
+                </div>
+            </div>
+        </div>
+        <div>
+            <label>Relate seu problema:</label>
+            <textarea rows="10" name="synopsis" class="form-input" placeholder="Insira seu texto..."></textarea>
+        </div>
+        <small>
+            {% if error %}{{ error }}{% endif %}
+        </small>
+        <button type="submit" class="btn-default">Adicionar livro</button>
+    </form>
+</main>
+{% block footer %}{{ parent() }}{% endblock %}
+{% endblock%}
+
+{% block javascripts %}{% endblock %}

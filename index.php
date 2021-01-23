@@ -40,4 +40,7 @@ $router->get("/deleteProfile", "UserController:deleteProfile");
 $router->get("/administrative", "BookController:administrative");
 $router->get("/deleteBook/{id}", "BookController:deleteBook");
 
+$router->get("/addBook", "BookController:addBook");
+$router->post("/addBook", "BookController:saveBook");
+
 $router->dispatch();

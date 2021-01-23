@@ -25,4 +25,7 @@ CREATE TABLE "cart"(
 	PRIMARY KEY("id_user", "id_book")
 );
 
-insert into "user" ("name", "email", "password") VALUES ('Alan', 'alanssantos32@gmail.com', '123456');
+INSERT INTO "user" ("name", "email", "password") VALUES ('Alan', 'alanssantos32@gmail.com', '123456');
+INSERT INTO "book" (name, author, image, price, amount, language, synopsis, genre) VALUES ('Trono de Vidro', 'Harry Potter', 'image', 24.50, 20, 'Português;', 'sdasdasjdksjda', 'Drama;Romance;');
+INSERT INTO "book" (name, author, image, price, amount, language, synopsis, genre) VALUES ('Just Case', 'Harry Potter', 'image', 30.49, 20, 'Português;', 'sdasdasjdksjda', 'Drama;Romance;');
+INSERT INTO "book" (name, author, image, price, amount, language, synopsis, genre) VALUES ('Crave a Marca', 'Harry Potter', 'image', 39.99, 20, 'Português;', 'sdasdasjdksjda', 'Drama;Romance;');

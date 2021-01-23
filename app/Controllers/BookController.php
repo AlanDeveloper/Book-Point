@@ -13,10 +13,39 @@ class BookController extends Controller {
         $this->book_model = new BookModel();
     }
 
+    protected function loadErrors($page, $error)
+    {
+        $this->load($page, [
+        'form' => [
+                'name' => $_POST['name'],
+                'author' => $_POST['author'],
+                'price' => $_POST['price'],
+                'amount' => $_POST['amount'],
+                'language' => $_POST['language'],
+                'synopsis' => $_POST['synopsis'],
+                'genre' => $_POST['genre']
+            ],
+            'error' => $error
+        ]);
+    }
+
     public function administrative()
     {
         $objs = $this->book_model->findAll();
         $this->load('administrative', ['objs' => $objs]);
+    }
+
+    public function addBook()
+    {
+        $this->load('addBook');
+    }
+
+    public function saveBook()
+    {
+        $result = $this->book_model->insert();
+        if (gettype($result) == 'object') {
+            header('Location: '. strval($_ENV['BASE_URL']) .'/administrative');
+        } else { $this->loadErrors('addBook', $result); }
     }
 
     public function deleteBook($data)
