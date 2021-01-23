@@ -1,0 +1,40 @@
+.category {
+    margin-top: 40px;
+}
+
+main div.category button {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+main button a {
+    color: var(--color-white);
+}
+
+.not-found {
+    text-align: center;
+}
+
+main i {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    position: relative;
+    background-image: url('../imgs/pencil.svg');
+}
+
+main i.icon-pencil {
+    background-image: url('../imgs/pencil.svg');
+}
+
+main i.icon-trash {
+    background-image: url('../imgs/trash.svg');
+}
+
+main td.buttons {
+    max-width: 20px;
+    text-align: right;
+    text-align: -webkit-right;
+}

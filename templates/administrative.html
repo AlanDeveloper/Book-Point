@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% use 'components/header.html' %}
+{% use 'components/footer.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="public/assets/css/header.css">
+<link rel="stylesheet" href="public/assets/css/footer.css">
+<link rel="stylesheet" href="public/assets/css/barSearch.css">
+<link rel="stylesheet" href="public/assets/css/admin.css">
+{% endblock %}
+
+{% block body %}
+{% block header %}{{ parent() }}{% endblock %}
+<main>
+    <form action="{{ base_url }}/search" method="GET" class="form">
+        <input type="search" name="query" class="form-input" placeholder="O que você está procurando?" />
+        <button type="submit">Pesquisar</button>
+    </form>
+    <div class="category">
+        <h1>Área administrativa</h1>
+        <hr>
+        <button class="btn-default"><a href="">Adicionar livro</a></button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Qtd</th>
+                <th>Preço</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            {% for obj in objs %}
+            <tr>
+                <td>{{obj.name}}</td>
+                <td>{{obj.amount}}</td>
+                <td>R$ {{obj.price}}</td>
+                <td class="buttons"><a href="#"><i class="icon-pencil"></i></a></td>
+                <td class="buttons"><a href="#"><i class="icon-trash"></i></a></td>
+            </tr>
+            {% endfor %}
+            {%if objs | length == 0 %}
+            <tr>
+                <td colspan="5" class="not-found">Nenhum livro encontrado.</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</main>
+{% block footer %}{{ parent() }}{% endblock %}
+{% endblock%}
+
+{% block javascripts %}{% endblock %}

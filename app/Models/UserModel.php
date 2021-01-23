@@ -13,6 +13,7 @@ class UserModel extends Model {
         } else {
             $obj = new User($array['name'], $array['email'], $array['password']);
             $obj->setId($array['id']);
+            $obj->setAdmin($array['admin']);
         }
         return $obj;
     }
@@ -48,39 +49,30 @@ class UserModel extends Model {
     {
         $obj = $this->create_obj();
         $isValidEmail = $_SESSION['email'] == $obj->getEmail();
-        if(isset($_POST['password'])) {
-            $isValidPassword = $_SESSION['password'] == $obj->getPassword();
-            if(!$isValidPassword) {
-                return 'A senha que você digitou está incorreta.';
-            }
-        }
         if(!$isValidEmail) {
             if($this->findEmail()) {
                 return 'O e-mail que você digitou já foi cadastrado.';
-            } else {
-                $sql = 'UPDATE "user" SET name = ?, email = ?, password = ? WHERE id = ?';
-                $array = array(
-                    $obj->getName(),
-                    $obj->getEmail(),
-                    MD5($obj->getPassword()),
-                    $obj->getId()
-                );
-                $this->query($sql, $array);
-        
-                return $obj;
             }
-        } else {
-            $sql = 'UPDATE "user" SET name = ?, password = ? WHERE id = ?';
-            $array = array(
-                $obj->getName(),
-                MD5($obj->getPassword()),
-                $obj->getId()
-            );
-            $this->query($sql, $array);
-    
-            return $obj;
         }
+        if($_POST['password'] != '') {
+            $isValidPassword = $_SESSION['password'] == md5($obj->getPassword());
+            if(!$isValidPassword) {
+                return 'A senha que você digitou está incorreta.';
+            } else {
+                $obj->setPassword(md5($_POST['repassword']));
+            }
+        }
+        
+        $sql = 'UPDATE "user" SET name = ?, email = ?, "password" = ? WHERE id = ?';
+        $array = array(
+            $obj->getName(),
+            $obj->getEmail(),
+            $obj->getPassword(),
+            $obj->getId()
+        );
+        $this->query($sql, $array);
 
+        return $obj;
     }
 
     public function auth()

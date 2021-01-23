@@ -115,7 +115,7 @@ class UserController extends Controller {
                 $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
             } else { $this->loadErrors('editProfile', $result); }
         } else {
-            $this->loadErrors('register', $error);
+            $this->loadErrors('editProfile', $error);
         }
     }
 
