@@ -3,14 +3,14 @@
 {% use 'components/footer.html' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="../public/assets/css/header.css">
-<link rel="stylesheet" href="../public/assets/css/footer.css">
-<link rel="stylesheet" href="../public/assets/css/formBook.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/header.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/footer.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/formBook.css">
 {% endblock %}
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}
 <main>
-    <form action="{{ base_url }}/editBook/{{attribute(obj, 'getId')}}" enctype="multipart/form-data" method="POST" class="form">
+    <form action="{{ base_url }}/book/edit/{{attribute(obj, 'getId')}}" enctype="multipart/form-data" method="POST" class="form">
         <h1>Área administrativa</h1>
         <hr>
         <div class="first">

@@ -42,7 +42,9 @@ class BookModel extends Model {
     {
         $obj = $this->findBy('id', $data);
         $obj2 = $this->create_obj();
-        if($obj2->getName() == $this->findBy('name', $obj2->getName(), 'exact')[0]->getName()) return 'O nome que você digitou já foi cadastrado.';
+        if(!empty($this->findBy('name', $obj2->getName(), 'exact'))) {
+            if($obj2->getName() == $this->findBy('name', $obj2->getName(), 'exact')[0]->getName()) return 'O nome que você digitou já foi cadastrado.';
+        }
         
         if($_FILES['image']['name'] == '') $obj2->setImage($obj[0]->getImage());
         $obj2->setId($data);

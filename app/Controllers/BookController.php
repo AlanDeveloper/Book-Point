@@ -67,23 +67,29 @@ class BookController extends Controller {
         } else { $this->loadErrors('addBook', $result); }
     }
 
-    public function editBook($data)
+    public function edit($data)
     {
-        $obj = $this->book_model->findBy('id', $data['id']);
-        $this->load("editBook", [
-            "obj" => $obj[0]
-        ]);
+        if($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $obj = $this->book_model->findBy('id', $data['id']);
+            $this->load("editBook", [
+                "obj" => $obj[0]
+            ]);
+        } else {
+            $pathtoImage = $this->upload_image();
+            $_POST['image'] = $pathtoImage ? $pathtoImage : $_POST['image'];
+
+            $result = $this->book_model->save($data['id']);
+            if (gettype($result) == 'object') {
+                header('Location: '. strval($_ENV['BASE_URL']) .'/administrative');
+            } else { $this->loadErrors('editBook', $result); }
+        }
     }
 
-    public function editSaveBook($data)
+    public function delete($data)
     {
-        $pathImage = $this->upload_image();
-        $_POST['image'] = $pathImage ? $pathImage : $_POST['image'];
-
-        $result = $this->book_model->save($data['id']);
-        if (gettype($result) == 'object') {
-            // header('Location: '. strval($_ENV['BASE_URL']) .'/administrative');
-        } else { $this->loadErrors('editBook', $result); }
+        $pathToImage = $this->book_model->delete($data['id']);
+        unlink($pathToImage);
+        header('Location: '. strval($_ENV['BASE_URL']) .'/administrative');
     }
 
     public function search()
@@ -115,12 +121,5 @@ class BookController extends Controller {
     {
         $objs = $this->book_model->findByOrder('amount', 'asc');
         $this->load("search", ["objs" => $objs]);
-    }
-
-    public function deleteBook($data)
-    {
-        $pathToImage = $this->book_model->delete($data['id']);
-        unlink($pathToImage);
-        header('Location: '. strval($_ENV['BASE_URL']) .'/administrative');
     }
 }
