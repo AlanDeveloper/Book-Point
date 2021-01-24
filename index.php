@@ -45,6 +45,7 @@ $router->post("/addBook", "BookController:saveBook");
 
 $router->get("/searchBook", "BookController:searchBook");
 $router->get("/category/{category}", "BookController:category");
+$router->get("/option/{option}", "BookController:option");
 
 $router->get("/editBook/{id}", "BookController:editBook");
 

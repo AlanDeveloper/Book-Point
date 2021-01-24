@@ -32,10 +32,10 @@
                 </ul>
                 <ul class="side-nav" id="menu-mobile">
                     <li><a href="{{ base_url }}/" class="{% if route == '/' %} active {% endif %}">INÍCIO</a></li>
-                    <li><a href="#">TODAS AS CATEGORIAS</a></li>
-                    <li><a href="#">MELHORES PROMOÇÕES</a></li>
-                    <li><a href="#">MAIS VENDIDOS</a></li>
-                    <li><a href="#">MENOR PREÇO</a></li>
+                    <li><a href="{{base_url}}/option/all">TODAS AS CATEGORIAS</a></li>
+                    <li><a href="{{base_url}}/option/promotions">MELHORES PROMOÇÕES</a></li>
+                    <li><a href="{{base_url}}/option/sales">MAIS VENDIDOS</a></li>
+                    <li><a href="{{base_url}}/option/smallPrice">MENOR PREÇO</a></li>
                     <li><a href="{{ base_url }}/support" class="{% if route == '/support' %} active {% endif %}">SUPORTE</a></li>
                     {% if session.logged %}
                         {% if session.admin %}
@@ -58,7 +58,7 @@
                 <div class="links">
                     <div class="dropbtn">
                         <div id="link">
-                            <a href="#">TODAS AS CATEGORIAS</a>
+                            <a href="{{base_url}}/option/all">TODAS AS CATEGORIAS</a>
                             <i class="icon-arrow"></i>
                         </div>
                         <ul class="dropdown">
@@ -68,9 +68,9 @@
                             <li><a href="{{base_url}}/category/romance">ROMANCE</a></li>
                         </ul>
                     </div>
-                    <a href="#">MELHORES PROMOÇÕES</a>
-                    <a href="#">MAIS VENDIDOS</a>
-                    <a href="#">MENOR PREÇO</a>
+                    <a href="{{base_url}}/option/promotions">MELHORES PROMOÇÕES</a>
+                    <a href="{{base_url}}/option/sales">MAIS VENDIDOS</a>
+                    <a href="{{base_url}}/option/smallPrice">MENOR PREÇO</a>
                 </div>
             </div>
         </nav>

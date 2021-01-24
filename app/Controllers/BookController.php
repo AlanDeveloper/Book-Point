@@ -92,6 +92,12 @@ class BookController extends Controller {
         $this->load("search", ["objs" => $objs]);
     }
 
+    public function option()
+    {
+        $objs = $this->book_model->findByOrderAmount();
+        $this->load("search", ["objs" => $objs]);
+    }
+
     public function deleteBook($data)
     {
         $pathToImage = $this->book_model->delete($data['id']);
