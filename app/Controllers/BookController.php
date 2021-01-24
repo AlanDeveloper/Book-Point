@@ -48,6 +48,14 @@ class BookController extends Controller {
         } else { $this->loadErrors('addBook', $result); }
     }
 
+    public function editBook($data)
+    {
+        $obj = $this->book_model->findById($data['id']);
+        $this->load("editBook", [
+            "obj" => $obj
+        ]);
+    }
+
     public function search()
     {
         $objs = $this->book_model->findByName($_GET['query']);
@@ -55,6 +63,12 @@ class BookController extends Controller {
             "query" => $_GET["query"],
             "objs" => $objs
         ]);
+    }
+
+    public function searchBook()
+    {
+        $objs = $this->book_model->findByName($_GET['query']);
+        $this->load("administrative", ["objs" => $objs]);
     }
 
     public function deleteBook($data)

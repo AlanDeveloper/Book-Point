@@ -3,36 +3,36 @@
 {% use 'components/footer.html' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="public/assets/css/header.css">
-<link rel="stylesheet" href="public/assets/css/footer.css">
-<link rel="stylesheet" href="public/assets/css/formBook.css">
+<link rel="stylesheet" href="../public/assets/css/header.css">
+<link rel="stylesheet" href="../public/assets/css/footer.css">
+<link rel="stylesheet" href="../public/assets/css/formBook.css">
 {% endblock %}
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}
 <main>
-    <form action="{{ base_url }}/addBook" enctype="multipart/form-data" method="POST" class="form">
+    <form action="{{ base_url }}/editBook" enctype="multipart/form-data" method="POST" class="form">
         <h1>Área administrativa</h1>
         <hr>
         <div class="first">
             <label>Nome: </label>
             <input type="text" class="form-input" name="name" maxlength="50" placeholder="Insira o nome do livro"
-            value="{% if form['email']  %}{{ form['name'] }}{% endif %}">
+                value="{{attribute(obj, 'getName')}}">
         </div>
         <div>
             <label>Author: </label>
             <input type="text" class="form-input" name="author" maxlength="50" placeholder="Insira o nome do author"
-            value="{% if form['email']  %}{{ form['author'] }}{% endif %}">
+                value="{{attribute(obj, 'getAuthor')}}">
         </div>
         <div class="row">
             <div class="col s6">
                 <label>Quantidade: </label>
                 <input type="number" class="form-input" name="amount" placeholder="Ex: 999"
-                value="{% if form['email']  %}{{ form['amount'] }}{% endif %}">
+                    value="{{attribute(obj, 'getAmount')}}">
             </div>
             <div class="col s6">
                 <label>Preço(R$): </label>
                 <input type="number" class="form-input" name="price" placeholder="Ex: 24.50"
-                value="{% if form['email']  %}{{ form['price'] }}{% endif %}">
+                    value="{{attribute(obj, 'getPrice')}}">
             </div>
         </div>
         <div class="row">
@@ -48,8 +48,7 @@
             </div>
             <div class="col s6">
                 <label>Gênero: </label>
-                <select class="form-input" name="genre"
-                    value="{% if form['email']  %}{{ form['genre'] }}{% endif %}">
+                <select class="form-input" name="genre" value="{% if form['email']  %}{{ form['genre'] }}{% endif %}">
                     <option value="">Selecione uma opção...</option>
                     <option value="Português">Ação</option>
                     <option value="Português">Aventura</option>
@@ -65,14 +64,14 @@
                     <input type="file" multiple>
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate form-input" type="text" name="image" placeholder="Carregue uma imagem">
+                    <input class="file-path validate form-input" type="text" name="image"
+                        placeholder="Carregue uma imagem">
                 </div>
             </div>
         </div>
         <div>
             <label>Sinopse:</label>
-            <textarea rows="10" name="synopsis" class="form-input" placeholder="Insira seu texto..."
-            value="{% if form['email']  %}{{ form['synopsis'] }}{% endif %}"></textarea>
+            <textarea rows="10" name="synopsis" class="form-input" placeholder="Insira seu texto...">{{attribute(obj, 'getSynopsis')}}</textarea>
         </div>
         <small>
             {% if error %}{{ error }}{% endif %}

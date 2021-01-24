@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="public/assets/css/materialize.min.css" />
-    <link rel="stylesheet" href="public/assets/css/index.css">
-    <link rel="shortcut icon" href="public/favicon.png">
+    <link type="text/css" rel="stylesheet" href="{{base_url}}/public/assets/css/materialize.min.css" />
+    <link rel="stylesheet" href="{{base_url}}/public/assets/css/index.css">
+    <link rel="shortcut icon" href="{{base_url}}/public/favicon.png">
     {% block stylesheets %}{% endblock %}
     
     <title>BookPoint</title>
 </head>
 <body>
     {% block body %}{% endblock %}
-    <script src="public/assets/js/jquery.min.js"></script>
-    <script src="public/assets/js/materialize.min.js"></script>
-    <script src="public/assets/js/index.js"></script>
+    <script src="{{base_url}}/public/assets/js/jquery.min.js"></script>
+    <script src="{{base_url}}/public/assets/js/materialize.min.js"></script>
+    <script src="{{base_url}}/public/assets/js/index.js"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>

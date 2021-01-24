@@ -12,7 +12,7 @@
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}
 <main>
-    <form action="{{ base_url }}/search" method="GET" class="form">
+    <form action="{{ base_url }}/searchBook" method="GET" class="form">
         <input type="search" name="query" class="form-input" placeholder="O que você está procurando?" />
         <button type="submit">Pesquisar</button>
     </form>
@@ -38,7 +38,7 @@
                 <td>{{attribute(obj, 'getName')}}</td>
                 <td>{{attribute(obj, 'getAmount')}}</td>
                 <td>R$ {{attribute(obj, 'getPrice')}}</td>
-                <td class="buttons"><a href="#"><i class="icon-pencil"></i></a></td>
+                <td class="buttons"><a href="{{base_url}}/editBook/{{attribute(obj, 'getId')}}"><i class="icon-pencil"></i></a></td>
                 <td class="buttons"><a href="{{base_url}}/deleteBook/{{attribute(obj, 'getId')}}"><i class="icon-trash"></i></a></td>
             </tr>
             {% endfor %}

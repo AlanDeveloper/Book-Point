@@ -43,4 +43,8 @@ $router->get("/deleteBook/{id}", "BookController:deleteBook");
 $router->get("/addBook", "BookController:addBook");
 $router->post("/addBook", "BookController:saveBook");
 
+$router->get("/searchBook", "BookController:searchBook");
+
+$router->get("/editBook/{id}", "BookController:editBook");
+
 $router->dispatch();

@@ -1,0 +1,107 @@
+main form.form div {
+    margin: 20px 0;
+}
+
+main form.form div.first {
+    margin-top: 40px;
+}
+
+main form.form div.last {
+    margin-bottom: 15px;
+}
+
+main form.form label {
+    font-size: 1rem;
+    color:  #000;
+}
+
+main form.form div.row .col.s6 {
+    padding-left: 0;
+    margin: 0;
+}
+
+main form.form div.row select {
+    display: block;
+    padding: 10px 25px;
+    height: 54px;
+}
+
+main form.form div.file-field {
+    display: flex;
+}
+
+main form.form div.file-path-wrapper {
+    position: relative;
+    top: -10px;
+}
+
+main form.form div.file-field .btn {
+    max-width: 150px;
+    padding: 27px;
+    background-color: var(--color-secondary);
+}
+
+main form.form  .file-field span {
+    position: relative;
+    top: -20px;
+}
+
+main form.form textarea.form-input {
+    min-height: 200px;
+    padding: 15px 25px;
+}
+
+main form.form small {
+    display: block;
+    padding: 20px 0;
+    padding-top: 10px;
+    font-size: .9rem;
+    color: red;
+}
+
+main form.form a {
+    margin-left: 20px;
+    line-height: 42px;
+}
+
+main form.form .form-input {
+    margin-top: 10px;
+}
+
+main form.form .btn-default {
+    float: left;
+    margin-bottom: 50px;
+}
+
+@media(max-width: 1000px) {
+    main form.form div.file-field .btn {
+        padding: 5px 20px;
+    }
+
+    main form.form  .file-field span {
+        top: -5px;
+        font-size: .9rem;
+    }
+
+}
+
+@media(max-width: 450px) {
+    main form.form h1 {
+        margin-bottom: 50px;
+    }
+
+    main form.form a {
+        float: none;
+        display: block;
+        margin-left: 0;
+    }
+
+    main form.form div {
+        margin: 20px 0;
+    }
+
+    main form.form .btn-default {
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+}

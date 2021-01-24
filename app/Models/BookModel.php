@@ -87,6 +87,17 @@ class BookModel extends Model {
         return $objs;
     }
 
+    public function findById($id)
+    {
+        $sql = 'SELECT * FROM "book" WHERE id = ?';
+        $array = array($id);
+
+        $result = $this->query($sql, $array);
+        $result = $result->fetch();
+
+        return $this->create_obj($result);
+    }
+
     public function delete($id)
     {
         $sql = 'DELETE FROM "book" WHERE id = ?';
