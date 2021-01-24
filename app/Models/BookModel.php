@@ -74,8 +74,8 @@ class BookModel extends Model {
 
     public function findByName($name)
     {
-        $sql = 'SELECT * FROM "book" WHERE name ilike %?%';
-        $array = array($name);
+        $sql = 'SELECT * FROM "book" WHERE name ilike ?';
+        $array = array('%'.$name.'%');
 
         $objs = [];
         $result = $this->query($sql, $array);

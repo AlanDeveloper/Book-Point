@@ -25,72 +25,24 @@
         <h1>Resultado para {{ query |upper }}</h1>
         <hr>
         <div class="gallery js-flickity books">
+            {% for obj in objs %}
             <div class="gallery-cell card is-selected">
                 <div>
-                    <img src="public/assets/imgs/book.png" alt="">
+                    <img src="{{attribute(obj, 'getImage')}}" alt="{{attribute(obj, 'getName')}}">
                     <div class="details">
-                        <p class="title">Trono de Vidro</p>
-                        <p class="subtitle">Harry Potter</p>
-                        <p class="price">R$ 24,50</p>
+                        <p class="title">{{attribute(obj, 'getName')}}</p>
+                        <p class="subtitle">{{attribute(obj, 'getAuthor')}}</p>
+                        <p class="price">R$ {{attribute(obj, 'getPrice')}}</p>
                         <button class="btn-default">Comprar</button>
                     </div>
                 </div>
             </div>
-            <div class="gallery-cell card is-selected">
-                <div>
-                    <img src="public/assets/imgs/book.png" alt="">
-                    <div class="details">
-                        <p class="title">Trono de Vidro</p>
-                        <p class="subtitle">Harry Potter</p>
-                        <p class="price">R$ 24,50</p>
-                        <button class="btn-default">Comprar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-cell card is-selected">
-                <div>
-                    <img src="public/assets/imgs/book.png" alt="">
-                    <div class="details">
-                        <p class="title">Trono de Vidro</p>
-                        <p class="subtitle">Harry Potter</p>
-                        <p class="price">R$ 24,50</p>
-                        <button class="btn-default">Comprar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-cell card is-selected">
-                <div>
-                    <img src="public/assets/imgs/book.png" alt="">
-                    <div class="details">
-                        <p class="title">Trono de Vidro</p>
-                        <p class="subtitle">Harry Potter</p>
-                        <p class="price">R$ 24,50</p>
-                        <button class="btn-default">Comprar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-cell card is-selected">
-                <div>
-                    <img src="public/assets/imgs/book.png" alt="">
-                    <div class="details">
-                        <p class="title">Trono de Vidro</p>
-                        <p class="subtitle">Harry Potter</p>
-                        <p class="price">R$ 24,50</p>
-                        <button class="btn-default">Comprar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-cell card is-selected">
-                <div>
-                    <img src="public/assets/imgs/book.png" alt="book">
-                    <div class="details">
-                        <p class="title">Trono de Vidro</p>
-                        <p class="subtitle">Harry Potter</p>
-                        <p class="price">R$ 24,50</p>
-                        <button class="btn-default">Comprar</button>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+            {%if objs | length == 0 %}
+            <tr>
+                <td colspan="5" class="not-found">Nenhum livro encontrado.</td>
+            </tr>
+            {% endif %}
         </div>
     </div>
 </main>

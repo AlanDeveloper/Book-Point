@@ -10,7 +10,7 @@
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}
 <main>
-    <form action="{{ base_url }}/addBook" method="POST" class="form">
+    <form action="{{ base_url }}/addBook" enctype="multipart/form-data" method="POST" class="form">
         <h1>Área administrativa</h1>
         <hr>
         <div>

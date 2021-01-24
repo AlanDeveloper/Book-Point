@@ -48,6 +48,15 @@ class BookController extends Controller {
         } else { $this->loadErrors('addBook', $result); }
     }
 
+    public function search()
+    {
+        $objs = $this->book_model->findByName($_GET['query']);
+        $this->load("search", [
+            "query" => $_GET["query"],
+            "objs" => $objs
+        ]);
+    }
+
     public function deleteBook($data)
     {
         $this->book_model->delete($data['id']);

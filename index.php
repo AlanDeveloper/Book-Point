@@ -22,7 +22,7 @@ $router->namespace("MyApp\Controllers");
 
 $router->group(null);
 $router->get("/", "Controller:home");
-$router->get("/search", "Controller:search");
+$router->get("/search", "BookController:search");
 $router->get("/support", "Controller:support");
 
 $router->get("/login", "UserController:login");
