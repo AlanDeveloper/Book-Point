@@ -39,9 +39,9 @@
             </div>
             {% endfor %}
             {%if objs | length == 0 %}
-            <tr>
-                <td colspan="5" class="not-found">Nenhum livro encontrado.</td>
-            </tr>
+            <div>
+                <p class="not-found">Nenhum livro encontrado.</p>
+            </div>
             {% endif %}
         </div>
     </div>

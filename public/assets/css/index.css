@@ -69,6 +69,11 @@ main button.btn-default {
   border: none;
 }
 
+main .not-found {
+  text-align: center;
+  text-align: -webkit-center;
+}
+
 @media(max-width: 1000px) {
   main {
     margin: 0 15px;
