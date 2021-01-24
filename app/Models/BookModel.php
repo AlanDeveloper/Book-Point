@@ -78,6 +78,21 @@ class BookModel extends Model {
         return $objs;
     }
 
+    public function findByCategory($category)
+    {
+        $sql = 'SELECT * FROM "book" WHERE genre ilike ?';
+        $array = array($category);
+
+        $objs = [];
+        $result = $this->query($sql, $array);
+        $result = $result->fetchAll();
+        foreach($result as $obj) {
+            array_push($objs, $this->create_obj($obj));
+        }
+
+        return $objs;
+    }
+
     public function findName()
     {
         $sql = 'SELECT * FROM "book" WHERE name ilike trim(?)';

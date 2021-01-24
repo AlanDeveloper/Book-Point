@@ -85,6 +85,13 @@ class BookController extends Controller {
         $this->load("administrative", ["objs" => $objs]);
     }
 
+    public function category($data)
+    {
+        $objs = $this->book_model->findByCategory($data['category']);
+        // $_GET['query'] = $data['category'];
+        $this->load("search", ["objs" => $objs]);
+    }
+
     public function deleteBook($data)
     {
         $pathToImage = $this->book_model->delete($data['id']);
