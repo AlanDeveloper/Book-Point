@@ -6,16 +6,6 @@ use MyApp\Models\classes\Book;
 
 class BookModel extends Model {
 
-    protected function query($sql, $array = [])
-    {
-        $conn = $this->connect();
-        $query = $conn->prepare($sql);
-        $query->execute($array);
-        $conn = null;
-
-        return $query;
-    }
-
     protected function create_obj($array = null)
     {
         if($array == null) {
@@ -26,7 +16,53 @@ class BookModel extends Model {
         }
         return $obj;
     }
-    
+
+    public function insert()
+    {
+        if($this->findBy('name', $_POST['name'], 'exact')) return 'O nome que você digitou já foi cadastrado.';
+
+        $obj = $this->create_obj();
+        $sql = 'INSERT INTO "book" (name, author, image, price, amount, language, synopsis, genre) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        $array = array(
+            $obj->getName(),
+            $obj->getAuthor(),
+            $obj->getImage(),
+            $obj->getPrice(),
+            $obj->getAmount(),
+            $obj->getLanguage(),
+            $obj->getSynopsis(),
+            $obj->getGenre()
+        );
+        $this->query($sql, $array);
+
+        return $obj;
+    }
+
+    public function save($data)
+    {
+        $obj = $this->findBy('id', $data);
+        $obj2 = $this->create_obj();
+        if($obj2->getName() == $this->findBy('name', $obj2->getName(), 'exact')[0]->getName()) return 'O nome que você digitou já foi cadastrado.';
+        
+        if($_FILES['image']['name'] == '') $obj2->setImage($obj[0]->getImage());
+        $obj2->setId($data);
+        $sql = 'UPDATE "book" SET name = ?, author = ?, image = ?, price = ?, amount = ?, language = ?, synopsis = ?, genre = ? WHERE id = ?';
+        $array = array(
+            $obj2->getName(),
+            $obj2->getAuthor(),
+            $obj2->getImage(),
+            $obj2->getPrice(),
+            $obj2->getAmount(),
+            $obj2->getLanguage(),
+            $obj2->getSynopsis(),
+            $obj2->getGenre(),
+            $obj2->getId(),
+        );
+        $this->query($sql, $array);
+
+        return $obj2;
+    }
+
     public function findAll()
     {
         $sql = 'SELECT * FROM "book"';
@@ -41,31 +77,29 @@ class BookModel extends Model {
         return $objs;
     }
 
-    public function insert()
+    public function findBy($param, $data, $type = 'partially')
     {
-        if(!$this->findName()) {
+        if(($param == 'name' or $param == 'genre') and $type == 'partially') {
+            $sql = "SELECT * FROM book WHERE $param ilike trim(?)";
+            $array = array("%$data%");
+        } else {
+            $sql = "SELECT * FROM book WHERE $param = ?";
+            $array = array($data);
+        }
+        
+        $objs = [];
+        $result = $this->query($sql, $array);
+        $result = $result->fetchAll();
+        foreach($result as $obj) {
+            array_push($objs, $this->create_obj($obj));
+        }
 
-            $obj = $this->create_obj();
-            $sql = 'INSERT INTO "book" (name, author, image, price, amount, language, synopsis, genre) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-            $array = array(
-                $obj->getName(),
-                $obj->getAuthor(),
-                $obj->getImage(),
-                $obj->getPrice(),
-                $obj->getAmount(),
-                $obj->getLanguage(),
-                $obj->getSynopsis(),
-                $obj->getGenre()
-            );
-            $this->query($sql, $array);
-    
-            return $obj;
-        } else { return 'O nome que você digitou já foi cadastrado.'; }
+        return $objs;
     }
 
-    public function findByOrderAmount()
+    public function findByOrder($param, $data)
     {
-        $sql = 'SELECT * FROM "book" order by amount asc';
+        $sql = "SELECT * FROM book ORDER BY $param $data";
         $array = array();
 
         $objs = [];
@@ -78,64 +112,14 @@ class BookModel extends Model {
         return $objs;
     }
 
-    public function findByCategory($category)
-    {
-        $sql = 'SELECT * FROM "book" WHERE genre ilike ?';
-        $array = array($category);
-
-        $objs = [];
-        $result = $this->query($sql, $array);
-        $result = $result->fetchAll();
-        foreach($result as $obj) {
-            array_push($objs, $this->create_obj($obj));
-        }
-
-        return $objs;
-    }
-
-    public function findName()
-    {
-        $sql = 'SELECT * FROM "book" WHERE name ilike trim(?)';
-        $array = array($_POST['name']);
-
-        $result = $this->query($sql, $array);
-        return $result->rowCount() == 1 ? true : false;
-    }
-
-    public function findByName($name)
-    {
-        $sql = 'SELECT * FROM "book" WHERE name ilike ?';
-        $array = array('%'.$name.'%');
-
-        $objs = [];
-        $result = $this->query($sql, $array);
-        $result = $result->fetchAll();
-        foreach($result as $obj) {
-            array_push($objs, $this->create_obj($obj));
-        }
-
-        return $objs;
-    }
-
-    public function findById($id)
-    {
-        $sql = 'SELECT * FROM "book" WHERE id = ?';
-        $array = array($id);
-
-        $result = $this->query($sql, $array);
-        $result = $result->fetch();
-
-        return $this->create_obj($result);
-    }
-
-    public function delete($id)
+    public function delete($data)
     {
         $sql = 'SELECT image FROM "book" WHERE id = ?';
-        $array = array($id);
+        $array = array($data);
         $pathToImage = $this->query($sql, $array);
 
         $sql = 'DELETE FROM "book" WHERE id = ?';
-        $array = array($id);
+        $array = array($data);
         $this->query($sql, $array);
         
         return $pathToImage;

@@ -48,5 +48,6 @@ $router->get("/category/{category}", "BookController:category");
 $router->get("/option/{option}", "BookController:option");
 
 $router->get("/editBook/{id}", "BookController:editBook");
+$router->post("/editBook/{id}", "BookController:editSaveBook");
 
 $router->dispatch();

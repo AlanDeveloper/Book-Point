@@ -32,7 +32,7 @@ class Controller {
 
     public function home()
     {
-        $objs = $this->book_model->findByOrderAmount();
+        $objs = $this->book_model->findByOrder('amount', 'asc');
         $this->load("home", ['objs' => $objs]);
     }
 

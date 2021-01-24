@@ -31,13 +31,18 @@ class BookController extends Controller {
 
     protected function upload_image()
     {
-        $data = new \DateTime();
-        $target_dir = "./uploads/";
-        $ext = explode('/', $_FILES['image']['type'])[1];
-        $target_file = $target_dir . $data->format('d-m-Y-H-i-s') . '.' . $ext;
-        move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+        if($_FILES['image']['name'] != '') {
 
-        return $target_file;
+            $data = new \DateTime();
+            $target_dir = "./uploads/";
+            $ext = explode('/', $_FILES['image']['type'])[1];
+            $target_file = $target_dir . $data->format('d-m-Y-H-i-s') . '.' . $ext;
+            move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+    
+            return $target_file;
+        } else {
+            return false;
+        }
     }
 
     public function administrative()
@@ -64,15 +69,26 @@ class BookController extends Controller {
 
     public function editBook($data)
     {
-        $obj = $this->book_model->findById($data['id']);
+        $obj = $this->book_model->findBy('id', $data['id']);
         $this->load("editBook", [
-            "obj" => $obj
+            "obj" => $obj[0]
         ]);
+    }
+
+    public function editSaveBook($data)
+    {
+        $pathImage = $this->upload_image();
+        $_POST['image'] = $pathImage ? $pathImage : $_POST['image'];
+
+        $result = $this->book_model->save($data['id']);
+        if (gettype($result) == 'object') {
+            // header('Location: '. strval($_ENV['BASE_URL']) .'/administrative');
+        } else { $this->loadErrors('editBook', $result); }
     }
 
     public function search()
     {
-        $objs = $this->book_model->findByName($_GET['query']);
+        $objs = $this->book_model->findBy('name', $_GET['query']);
         $this->load("search", [
             "query" => $_GET["query"],
             "objs" => $objs
@@ -81,20 +97,23 @@ class BookController extends Controller {
 
     public function searchBook()
     {
-        $objs = $this->book_model->findByName($_GET['query']);
-        $this->load("administrative", ["objs" => $objs]);
+        $objs = $this->book_model->findBy('name', $_GET['query']);
+        $this->load("administrative", [
+            "query" => $_GET["query"],
+            "objs" => $objs
+        ]);
     }
 
     public function category($data)
     {
-        $objs = $this->book_model->findByCategory($data['category']);
+        $objs = $this->book_model->findBy('genre', $data['category']);
         // $_GET['query'] = $data['category'];
         $this->load("search", ["objs" => $objs]);
     }
 
     public function option()
     {
-        $objs = $this->book_model->findByOrderAmount();
+        $objs = $this->book_model->findByOrder('amount', 'asc');
         $this->load("search", ["objs" => $objs]);
     }
 

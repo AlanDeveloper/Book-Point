@@ -10,50 +10,49 @@
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}
 <main>
-    <form action="{{ base_url }}/editBook" enctype="multipart/form-data" method="POST" class="form">
+    <form action="{{ base_url }}/editBook/{{attribute(obj, 'getId')}}" enctype="multipart/form-data" method="POST" class="form">
         <h1>Área administrativa</h1>
         <hr>
         <div class="first">
             <label>Nome: </label>
             <input type="text" class="form-input" name="name" maxlength="50" placeholder="Insira o nome do livro"
-                value="{{attribute(obj, 'getName')}}">
+                value="{% if attribute(obj, 'getName') %}{{attribute(obj, 'getName')}}{% else %}{{form['name']}}{% endif %}">
         </div>
         <div>
             <label>Author: </label>
             <input type="text" class="form-input" name="author" maxlength="50" placeholder="Insira o nome do author"
-                value="{{attribute(obj, 'getAuthor')}}">
+                value="{% if attribute(obj, 'getAuthor') %}{{attribute(obj, 'getAuthor')}}{% else %}{{form['author']}}{% endif %}">
         </div>
         <div class="row">
             <div class="col s6">
                 <label>Quantidade: </label>
                 <input type="number" class="form-input" name="amount" placeholder="Ex: 999"
-                    value="{{attribute(obj, 'getAmount')}}">
+                    value="{% if attribute(obj, 'getAmount') %}{{attribute(obj, 'getAmount')}}{% else %}{{form['amount']}}{% endif %}">
             </div>
             <div class="col s6">
                 <label>Preço(R$): </label>
                 <input type="number" class="form-input" name="price" placeholder="Ex: 24.50"
-                    value="{{attribute(obj, 'getPrice')}}">
+                    value="{% if attribute(obj, 'getPrice') %}{{attribute(obj, 'getPrice')}}{% else %}{{form['price']}}{% endif %}">
             </div>
         </div>
         <div class="row">
             <div class="col s6">
                 <label>Idioma: </label>
-                <select class="form-input" name="language"
-                    value="{% if form['email']  %}{{ form['language'] }}{% endif %}">
+                <select class="form-input" name="language">
                     <option value="">Selecione uma opção...</option>
-                    <option value="Português">Português</option>
-                    <option value="Inglês">Inglês</option>
-                    <option value="Espanhol">Espanhol</option>
+                    <option value="Português" {% if attribute(obj, 'getLanguage') == 'Português' or form['language'] == 'Português' %}selected{% endif %}>Português</option>
+                    <option value="Inglês" {% if attribute(obj, 'getLanguage') == 'Inglês' or form['language'] == 'Inglês' %}selected{% endif %}>Inglês</option>
+                    <option value="Espanhol" {% if attribute(obj, 'getLanguage') == 'Espanhol' or form['language'] == 'Espanhol' %}selected{% endif %}>Espanhol</option>
                 </select>
             </div>
             <div class="col s6">
                 <label>Gênero: </label>
                 <select class="form-input" name="genre" value="{% if form['email']  %}{{ form['genre'] }}{% endif %}">
                     <option value="">Selecione uma opção...</option>
-                    <option value="Ação">Ação</option>
-                    <option value="Aventura">Aventura</option>
-                    <option value="Drama">Drama</option>
-                    <option value="Romance">Romance</option>
+                    <option value="Ação" {% if attribute(obj, 'getGenre') == 'Ação' or form['genre'] == 'Ação'  %}selected{% endif %}>Ação</option>
+                    <option value="Aventura" {% if attribute(obj, 'getGenre') == 'Aventura' or form['genre'] == 'Aventura' %}selected{% endif %}>Aventura</option>
+                    <option value="Drama" {% if attribute(obj, 'getGenre') == 'Drama' or form['genre'] == 'Drama' %}selected{% endif %}>Drama</option>
+                    <option value="Romance" {% if attribute(obj, 'getGenre') == 'Romance' or form['genre'] == 'Romance' %}selected{% endif %}>Romance</option>
                 </select>
             </div>
         </div>
@@ -71,12 +70,12 @@
         </div>
         <div>
             <label>Sinopse:</label>
-            <textarea rows="10" name="synopsis" class="form-input" placeholder="Insira seu texto...">{{attribute(obj, 'getSynopsis')}}</textarea>
+            <textarea rows="10" name="synopsis" class="form-input" placeholder="Insira seu texto...">{% if attribute(obj, 'getSynopsis') %}{{attribute(obj, 'getSynopsis')}}{% else %}{{form['synopsis']}}{% endif %}</textarea>
         </div>
         <small>
             {% if error %}{{ error }}{% endif %}
         </small>
-        <button type="submit" class="btn-default">Adicionar livro</button>
+        <button type="submit" class="btn-default">Salvar livro</button>
     </form>
 </main>
 {% block footer %}{{ parent() }}{% endblock %}

@@ -18,16 +18,6 @@ class UserModel extends Model {
         return $obj;
     }
 
-    protected function query($sql, $array = [])
-    {
-        $conn = $this->connect();
-        $query = $conn->prepare($sql);
-        $query->execute($array);
-        $conn = null;
-
-        return $query;
-    }
-
     public function insert()
     {
         if(!$this->findEmail()) {
