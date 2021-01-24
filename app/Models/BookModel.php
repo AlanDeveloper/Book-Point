@@ -100,9 +100,14 @@ class BookModel extends Model {
 
     public function delete($id)
     {
+        $sql = 'SELECT image FROM "book" WHERE id = ?';
+        $array = array($id);
+        $pathToImage = $this->query($sql, $array);
+
         $sql = 'DELETE FROM "book" WHERE id = ?';
         $array = array($id);
-
-        $result = $this->query($sql, $array);
+        $this->query($sql, $array);
+        
+        return $pathToImage;
     }
 }

@@ -29,6 +29,17 @@ class BookController extends Controller {
         ]);
     }
 
+    protected function upload_image()
+    {
+        $data = new \DateTime();
+        $target_dir = "./uploads/";
+        $ext = explode('/', $_FILES['image']['type'])[1];
+        $target_file = $target_dir . $data->format('d-m-Y-H-i-s') . '.' . $ext;
+        move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+
+        return $target_file;
+    }
+
     public function administrative()
     {
         $objs = $this->book_model->findAll();
@@ -42,6 +53,9 @@ class BookController extends Controller {
 
     public function saveBook()
     {
+        $pathImage = $this->upload_image();
+        $_POST['image'] = $pathImage;
+
         $result = $this->book_model->insert();
         if (gettype($result) == 'object') {
             header('Location: '. strval($_ENV['BASE_URL']) .'/administrative');
@@ -73,7 +87,8 @@ class BookController extends Controller {
 
     public function deleteBook($data)
     {
-        $this->book_model->delete($data['id']);
+        $pathToImage = $this->book_model->delete($data['id']);
+        unlink($pathToImage);
         header('Location: '. strval($_ENV['BASE_URL']) .'/administrative');
     }
 }

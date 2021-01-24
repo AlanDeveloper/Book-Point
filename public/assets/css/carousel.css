@@ -48,6 +48,7 @@ main .gallery-cell.card div {
 
 main .gallery-cell.card img {
     justify-content: center;
+    height: 260px;
     margin: 15px;
 }
 
@@ -93,6 +94,7 @@ main .gallery-cell.card button {
     
     main .gallery-cell.card img {
         margin: 10px;
+        height: 200px;
     }
 
     main .gallery-cell.card .details {
