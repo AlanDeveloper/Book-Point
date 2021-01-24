@@ -63,6 +63,21 @@ class BookModel extends Model {
         } else { return 'O nome que você digitou já foi cadastrado.'; }
     }
 
+    public function findByOrderAmount()
+    {
+        $sql = 'SELECT * FROM "book" order by amount asc';
+        $array = array();
+
+        $objs = [];
+        $result = $this->query($sql, $array);
+        $result = $result->fetchAll();
+        foreach($result as $obj) {
+            array_push($objs, $this->create_obj($obj));
+        }
+
+        return $objs;
+    }
+
     public function findName()
     {
         $sql = 'SELECT * FROM "book" WHERE name ilike trim(?)';

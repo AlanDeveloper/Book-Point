@@ -2,6 +2,9 @@
 
 namespace MyApp\Controllers;
 
+use MyApp\Models\BookModel;
+use MyApp\Models\UserModel;
+
 class Controller {
 
     protected function load($view, $params = [])
@@ -21,9 +24,16 @@ class Controller {
         echo $twig->render($view.'.html', $params);
     }
 
+    public function __construct()
+    {
+        $this->book_model = new BookModel();
+        $this->user_model = new UserModel();
+    }
+
     public function home()
     {
-        $this->load("home");
+        $objs = $this->book_model->findByOrderAmount();
+        $this->load("home", ['objs' => $objs]);
     }
 
     public function search()
