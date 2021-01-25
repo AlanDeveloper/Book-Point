@@ -70,7 +70,7 @@
         </div>
         <div>
             <label>Sinopse:</label>
-            <textarea rows="10" name="synopsis" class="form-input" placeholder="Insira seu texto...">{% if attribute(obj, 'getSynopsis') %}{{attribute(obj, 'getSynopsis')}}{% else %}{{form['synopsis']}}{% endif %}</textarea>
+            <textarea rows="10" name="synopsis" class="form-input" maxlength="2500" placeholder="Insira seu texto...">{% if attribute(obj, 'getSynopsis') %}{{attribute(obj, 'getSynopsis')}}{% else %}{{form['synopsis']}}{% endif %}</textarea>
         </div>
         <small>
             {% if error %}{{ error }}{% endif %}

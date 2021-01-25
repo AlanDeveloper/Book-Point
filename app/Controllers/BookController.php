@@ -6,6 +6,21 @@ use MyApp\Models\BookModel;
 
 class BookController extends Controller {
 
+    protected function verifyForm()
+    {
+        if(strlen($_POST['name']) > 50) {
+            return 'Campo nome não está no tamanho especificado.';
+        }
+        if(strlen($_POST['author']) > 50) {
+            return 'Campo autor não está no tamanho especificado.';
+        }
+        if(strlen($_POST['synopsis']) > 2500) {
+            return 'Campo de sinopse não está no tamanho especificado.';
+        }
+
+        return '';
+    }
+
     protected function loadErrors($page, $error)
     {
         $this->load($page, [
@@ -49,13 +64,20 @@ class BookController extends Controller {
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
             $this->load('addBook');
         } else {
-            $pathToImage = $this->uploadImage();
-            $_POST['image'] = $pathToImage;
+            $error = $this->verifyForm();
+            if($error == '') {
 
-            $result = $this->book_model->insert();
-            if (gettype($result) == 'object') {
-                header('Location: '. strval($_ENV['BASE_URL']) .'/book');
-            } else { $this->loadErrors('addBook', $result); }
+                $pathToImage = $this->uploadImage();
+                $_POST['image'] = $pathToImage;
+
+                $result = $this->book_model->insert();
+                if (gettype($result) == 'object') {
+                    header('Location: '. strval($_ENV['BASE_URL']) .'/book');
+                } else { $this->loadErrors('addBook', $result); }
+            } else {
+                $this->loadErrors('addBook', $error);
+            }
+
         }
     }
 
@@ -67,13 +89,19 @@ class BookController extends Controller {
                 "obj" => $obj[0]
             ]);
         } else {
-            $pathtoImage = $this->uploadImage();
-            $_POST['image'] = $pathtoImage ? $pathtoImage : $_POST['image'];
+            $error = $this->verifyForm();
+            if($error == '') {
 
-            $result = $this->book_model->save($data['id']);
-            if (gettype($result) == 'object') {
-                header('Location: '. strval($_ENV['BASE_URL']) .'/book');
-            } else { $this->loadErrors('editBook', $result); }
+                $pathtoImage = $this->uploadImage();
+                $_POST['image'] = $pathtoImage ? $pathtoImage : $_POST['image'];
+    
+                $result = $this->book_model->save($data['id']);
+                if (gettype($result) == 'object') {
+                    header('Location: '. strval($_ENV['BASE_URL']) .'/book');
+                } else { $this->loadErrors('editBook', $result); }
+            } else {
+                $this->loadErrors('editBook', $error);
+            }
         }
     }
 

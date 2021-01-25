@@ -16,30 +16,30 @@
         <div class="first">
             <label>Nome: </label>
             <input type="text" class="form-input" name="name" maxlength="50" placeholder="Insira o nome do livro"
-            value="{% if form['email']  %}{{ form['name'] }}{% endif %}">
+            value="{% if form['name']  %}{{ form['name'] }}{% endif %}">
         </div>
         <div>
             <label>Author: </label>
             <input type="text" class="form-input" name="author" maxlength="50" placeholder="Insira o nome do author"
-            value="{% if form['email']  %}{{ form['author'] }}{% endif %}">
+            value="{% if form['author']  %}{{ form['author'] }}{% endif %}">
         </div>
         <div class="row">
             <div class="col s6">
                 <label>Quantidade: </label>
                 <input type="number" class="form-input" name="amount" placeholder="Ex: 999"
-                value="{% if form['email']  %}{{ form['amount'] }}{% endif %}">
+                value="{% if form['amount']  %}{{ form['amount'] }}{% endif %}">
             </div>
             <div class="col s6">
                 <label>Preço(R$): </label>
                 <input type="number" class="form-input" name="price" placeholder="Ex: 24.50"
-                value="{% if form['email']  %}{{ form['price'] }}{% endif %}">
+                value="{% if form['price']  %}{{ form['price'] }}{% endif %}">
             </div>
         </div>
         <div class="row">
             <div class="col s6">
                 <label>Idioma: </label>
                 <select class="form-input" name="language"
-                    value="{% if form['email']  %}{{ form['language'] }}{% endif %}">
+                    value="{% if form['language']  %}{{ form['language'] }}{% endif %}">
                     <option value="">Selecione uma opção...</option>
                     <option value="Português">Português</option>
                     <option value="Inglês">Inglês</option>
@@ -49,7 +49,7 @@
             <div class="col s6">
                 <label>Gênero: </label>
                 <select class="form-input" name="genre"
-                    value="{% if form['email']  %}{{ form['genre'] }}{% endif %}">
+                    value="{% if form['genre']  %}{{ form['genre'] }}{% endif %}">
                     <option value="">Selecione uma opção...</option>
                     <option value="Ação">Ação</option>
                     <option value="Aventura">Aventura</option>
@@ -71,8 +71,8 @@
         </div>
         <div>
             <label>Sinopse:</label>
-            <textarea rows="10" name="synopsis" class="form-input" placeholder="Insira seu texto..."
-            value="{% if form['email']  %}{{ form['synopsis'] }}{% endif %}"></textarea>
+            <textarea rows="10" name="synopsis" class="form-input" maxlength="2500" placeholder="Insira seu texto..."
+            value="{% if form['synopsis']  %}{{ form['synopsis'] }}{% endif %}"></textarea>
         </div>
         <small>
             {% if error %}{{ error }}{% endif %}
