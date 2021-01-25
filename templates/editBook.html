@@ -82,4 +82,14 @@
 {% block footer %}{{ parent() }}{% endblock %}
 {% endblock%}
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+<script>
+    const synopsis = document.getElementsByName('synopsis')[0];
+    const strong = document.querySelector('strong');
+
+    console.log(strong.innerText);
+    synopsis.addEventListener('keyup', function () {
+        strong.innerText = 2500 - parseInt(synopsis.value.length);
+    });
+</script>
+{% endblock %}
