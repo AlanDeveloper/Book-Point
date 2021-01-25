@@ -6,13 +6,6 @@ use MyApp\Models\UserModel;
 
 class UserController extends Controller {
 
-    protected $user_model;
-
-    public function __construct()
-    {
-        $this->user_model = new UserModel();
-    }
-
     protected function verifyForm($request_password = true, $to_compare = true)
     {
         if(!(strlen($_POST['email']) <= 255)) {

@@ -3,23 +3,23 @@
 {% use 'components/footer.html' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="public/assets/css/header.css">
-<link rel="stylesheet" href="public/assets/css/footer.css">
-<link rel="stylesheet" href="public/assets/css/barSearch.css">
-<link rel="stylesheet" href="public/assets/css/admin.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/header.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/footer.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/barSearch.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/admin.css">
 {% endblock %}
 
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}
 <main>
-    <form action="{{ base_url }}/searchBook" method="GET" class="form">
+    <form action="{{base_url}}/book/searchAdmin" method="GET" class="form">
         <input type="search" name="query" class="form-input" value="{{ query }}" placeholder="O que você está procurando?" />
         <button type="submit">Pesquisar</button>
     </form>
     <div class="category">
-        <h1>Área administrativa</h1>
+        <h1>{% if query %}Resultado para {{ query |upper }}{% else %}Área administrativa{% endif %}</h1>
         <hr>
-        <button class="btn-default"><a href="{{base_url}}/addBook">Adicionar livro</a></button>
+        <button class="btn-default"><a href="{{base_url}}/book/add">Adicionar livro</a></button>
     </div>
     <table>
         <thead>

@@ -3,9 +3,9 @@
 {% use 'components/footer.html' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="public/assets/css/header.css">
-<link rel="stylesheet" href="public/assets/css/footer.css">
-<link rel="stylesheet" href="public/assets/css/support.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/header.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/footer.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/support.css">
 {% endblock %}
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}

@@ -3,18 +3,18 @@
 {% use 'components/footer.html' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="public/assets/css/header.css">
-<link rel="stylesheet" href="public/assets/css/footer.css">
-<link rel="stylesheet" href="public/assets/css/barSearch.css">
-<link rel="stylesheet" href="public/assets/css/flickity.css">
-<link rel="stylesheet" href="public/assets/css/carousel.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/header.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/footer.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/barSearch.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/flickity.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/carousel.css">
 {% endblock %}
 
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}
 <main>
     <form action="{{ base_url }}/search" method="GET" class="form">
-        <input type="search" name="query" class="form-input" placeholder="O que você está procurando?" />
+        <input type="search" name="query" class="form-input" value="{{ query }}" placeholder="O que você está procurando?" />
         <button type="submit">Pesquisar</button>
     </form>
     <div class="gallery js-flickity">
@@ -22,7 +22,10 @@
         <div class="gallery-cell" id="img2"></div>
     </div>
     <div class="category">
-        <h1>MAIS POPULARES</h1>
+        <h1>
+            {% if query %}
+            Resultado para {{ query |upper }}
+            {% else %}{% if title %}Resultado para {{ title |upper }}{% else %}MAIS POPULARES{% endif %}{% endif %}</h1>
         <hr>
         <div class="gallery js-flickity books">
             {% for obj in objs %}
@@ -50,7 +53,7 @@
 {% endblock%}
 
 {% block javascripts %}
-<script src="public/assets/js/flickity.pkgd.min.js"></script>
+<script src="{{base_url}}/public/assets/js/flickity.pkgd.min.js"></script>
 <script>
     $('.gallery').flickity({
         cellAlign: 'left',

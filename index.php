@@ -37,21 +37,20 @@ $router->post("/editProfile", "UserController:saveProfile");
 $router->get("/loggout", "UserController:loggout");
 $router->get("/deleteProfile", "UserController:deleteProfile");
 
-$router->get("/administrative", "BookController:administrative");
-
-$router->get("/addBook", "BookController:addBook");
-$router->post("/addBook", "BookController:saveBook");
-
-$router->get("/searchBook", "BookController:searchBook");
-$router->get("/category/{category}", "BookController:category");
-$router->get("/option/{option}", "BookController:option");
-
-
 // BOOK
 $router->group('book');
 
+$router->get("/", "BookController:home");
+
+$router->get("/add", "BookController:add");
+$router->post("/add", "BookController:add");
+
 $router->get("/edit/{id}", "BookController:edit");
 $router->post("/edit/{id}", "BookController:edit");
+
+$router->get("/search", "BookController:search");
+$router->get("/search/{category}", "BookController:search");
+$router->get("/searchAdmin", "BookController:searchAdmin");
 
 $router->get("/delete/{id}", "BookController:delete");
 
