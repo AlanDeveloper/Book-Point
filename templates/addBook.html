@@ -88,10 +88,9 @@
 <script>
     const synopsis = document.getElementsByName('synopsis')[0];
     const strong = document.querySelector('strong');
+    const countCaracters = () => strong.innerText = 2500 - parseInt(synopsis.value.length);
 
-    console.log(strong.innerText);
-    synopsis.addEventListener('keyup', function () {
-        strong.innerText = 2500 - parseInt(synopsis.value.length);
-    });
+    synopsis.addEventListener('keyup', countCaracters);
+    countCaracters();
 </script>
 {% endblock %}
