@@ -120,6 +120,10 @@ header nav .dropdown, header nav .dropdown-login {
   z-index: 1;
 }
 
+header nav .dropdown-login a {
+   font-size: .95rem;
+}
+
 header nav .dropdown {
   background-color: var(--color-secondary);
   min-width: 160px;
@@ -128,8 +132,8 @@ header nav .dropdown {
 header nav .dropdown-login {
   margin-top: 20px;
   background-color: var(--color-primary);
-  min-width: 80px;
-  line-height: 70px;
+  min-width: 70px;
+  line-height: 60px;
 }
 
 header nav .dropdown a {

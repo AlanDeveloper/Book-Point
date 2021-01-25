@@ -13,7 +13,7 @@
                         <div class="dropbtn">
                             <a href="#"><i class="icon-user"></i></a>
                             {% if session.logged %}
-                                <ul class="dropdown-login" {% if session.admin %}style="min-width: 210px;"{% else %}style="min-width: 150px;"{% endif %}>
+                                <ul class="dropdown-login" {% if session.admin %}style="min-width: 200px;"{% endif %}>
                                     {% if session.admin %}
                                         <li><a href="{{base_url}}/book" class="{% if route == '/book' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
                                     {% endif %}
