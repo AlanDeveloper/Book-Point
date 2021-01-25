@@ -59,6 +59,10 @@ main form.form small {
     color: red;
 }
 
+main form.form div small.synopsis {
+    color: var(--color-silver) !important;
+}
+
 main form.form a {
     margin-left: 20px;
     line-height: 42px;

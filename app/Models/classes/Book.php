@@ -51,6 +51,13 @@ class Book {
         return $this->price;
     }
 
+    public function getFormatedPrice()
+    {
+        $number = $this->getPrice();
+        $number = number_format($number, 2);
+        return str_replace('.', ',', $number);
+    }
+
     public function setPrice($price)
     {
         $this->price = $price;
