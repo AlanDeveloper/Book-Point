@@ -15,7 +15,7 @@
                             {% if session.logged %}
                                 <ul class="dropdown-login" {% if session.admin %}style="min-width: 200px;"{% else %}style="min-width: 150px;"{% endif %}>
                                     {% if session.admin %}
-                                        <li><a href="{{base_url}}/book" class="{% if route == '/book' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
+                                        <li><a href="{{base_url}}/book" class="{% if route == base_url ~ '/book' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
                                     {% endif %}
                                     <li><a href="{{base_url}}/user/edit/{{session.id}}" class="{% if route == '/user/edit/' ~ session.id %}active{% endif %}">EDITAR PERFIL</a></li>
                                     <li><a href="{{base_url}}/user/loggout">SAIR</a></li>
