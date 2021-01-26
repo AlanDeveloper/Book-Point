@@ -60,7 +60,7 @@ class UserModel extends Model {
         return $obj;
     }
 
-    public function auth()
+    public function find()
     {
         $sql = 'SELECT * FROM "user" WHERE email = ? AND password = ?';
         $array = array(
@@ -77,14 +77,6 @@ class UserModel extends Model {
         }
     }
 
-    public function delete()
-    {
-        $sql = 'DELETE FROM "user" WHERE id = ?';
-        $array = array($_SESSION['id']);
-
-        $result = $this->query($sql, $array);
-    }
-
     public function findEmail()
     {
         $sql = 'SELECT * FROM "user" WHERE email = ?';
@@ -94,15 +86,11 @@ class UserModel extends Model {
         return $result->rowCount() == 1 ? true : false;
     }
 
-    public function find($obj)
+    public function delete()
     {
-        $sql = 'SELECT * FROM "user" WHERE email = ? AND password = ?';
-        $array = array(
-            $obj->getEmail(),
-            $obj->getPassword()
-        );
+        $sql = 'DELETE FROM "user" WHERE id = ?';
+        $array = array($_SESSION['id']);
 
         $result = $this->query($sql, $array);
-        return $result->fetch();
     }
 }

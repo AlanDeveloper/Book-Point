@@ -25,14 +25,14 @@ $router->get("/", "Controller:home");
 $router->get("/search", "BookController:search");
 $router->get("/support", "Controller:support");
 
-$router->get("/login", "UserController:login");
-$router->post("/login", "UserController:authLogin");
-
 // USER
 $router->group('user');
 
 $router->get("/add", "UserController:add");
 $router->post("/add", "UserController:add");
+
+$router->get("/login", "UserController:auth");
+$router->post("/login", "UserController:auth");
 
 $router->get("/edit/{id}", "UserController:edit");
 $router->post("/edit/{id}", "UserController:edit");

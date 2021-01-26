@@ -48,23 +48,22 @@ class UserController extends Controller {
         $_SESSION['admin'] = $obj->getAdmin();
     }
 
-    public function login()
+    public function auth()
     {
-        $this->load('login');
-    }
-
-    public function authLogin()
-    {
-        $error = $this->verifyForm();
-        if($error == '') {
-
-            $result = $this->user_model->auth();
-            if (gettype($result) == 'object') {
-                $this->startSession($result);
-                $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
-            } else { $this->loadErrors('login', $result); }
+        if($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $this->load('login');
         } else {
-            $this->loadErrors('login', $error);
+            $error = $this->verifyForm();
+            if($error == '') {
+
+                $result = $this->user_model->find();
+                if (gettype($result) == 'object') {
+                    $this->startSession($result);
+                    $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
+                } else { $this->loadErrors('login', $result); }
+            } else {
+                $this->loadErrors('login', $error);
+            }
         }
     }
 
