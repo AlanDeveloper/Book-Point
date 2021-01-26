@@ -13,17 +13,17 @@
                         <div class="dropbtn">
                             <a href="#"><i class="icon-user"></i></a>
                             {% if session.logged %}
-                                <ul class="dropdown-login" {% if session.admin %}style="min-width: 200px;"{% endif %}>
+                                <ul class="dropdown-login" {% if session.admin %}style="min-width: 200px;"{% else %}style="min-width: 150px;"{% endif %}>
                                     {% if session.admin %}
                                         <li><a href="{{base_url}}/book" class="{% if route == '/book' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
                                     {% endif %}
-                                    <li><a href="{{base_url}}/editProfile" class="{% if route == '/editProfile' %} active {% endif %}">EDITAR PERFIL</a></li>
-                                    <li><a href="{{base_url}}/loggout">SAIR</a></li>
+                                    <li><a href="{{base_url}}/user/edit/{{session.id}}" class="{% if route == '/user/edit' %} active {% endif %}">EDITAR PERFIL</a></li>
+                                    <li><a href="{{base_url}}/user/loggout">SAIR</a></li>
                                 </ul>
                             {% else %}
                                 <ul class="dropdown-login">
                                     <li><a href="{{base_url}}/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
-                                    <li><a href="{{base_url}}/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
+                                    <li><a href="{{base_url}}/user/add" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
                                 </ul>
                             {% endif %}
                         </div>
@@ -41,11 +41,11 @@
                         {% if session.admin %}
                             <li><a href="{{base_url}}/book" class="{% if route == '/book' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
                         {% endif %}
-                        <li><a href="{{base_url}}/editProfile" class="{% if route == '/editProfile' %} active {% endif %}">EDITAR PERFIL</a></li>
-                        <li><a href="{{base_url}}/loggout">SAIR</a></li>
+                        <li><a href="{{base_url}}/user/edit/{{session.id}}" class="{% if route == '/user/edit' %} active {% endif %}">EDITAR PERFIL</a></li>
+                        <li><a href="{{base_url}}/user/loggout">SAIR</a></li>
                     {% else %}
                         <li><a href="{{base_url}}/login" class="{% if route == '/login' %} active {% endif %}">ENTRAR</a></li>
-                        <li><a href="{{base_url}}/register" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
+                        <li><a href="{{base_url}}/user/add" class="{% if route == '/register' %} active {% endif %}">CADASTRAR</a></li>
                     {% endif %}
                 </ul>
                 <div class="mobile right">

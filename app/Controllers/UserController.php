@@ -6,27 +6,24 @@ use MyApp\Models\UserModel;
 
 class UserController extends Controller {
 
-    protected function verifyForm($request_password = true, $to_compare = true)
+    protected function verifyForm()
     {
-        if(!(strlen($_POST['email']) <= 255)) {
+        if(!empty($_POST['name'])) {
+            if(strlen($_POST['name']) > 50) return 'Campo nome não está no tamanho especificado.';
+        }
+        if(strlen($_POST['email']) > 255) {
             return 'Campo e-mail não está no tamanho especificado.';
         }
-        if(isset($_POST['name'])) {
-            if(!(strlen($_POST['name']) <= 50)) {
-                return 'Campo nome não está no tamanho especificado.';
-            }
+        if(strlen($_POST['password']) > 50 or strlen($_POST['password']) < 6) {
+            return 'Campo senha não está no tamanho especificado.';
         }
-        if($request_password) {
-
-            if(!(strlen($_POST['password']) >= 6 and strlen($_POST['password']) <= 50)) {
-                return 'Campo senha não está no tamanho especificado.';
-            }
-            if(isset($_POST['repassword']) and $to_compare) {
-                if(!($_POST['repassword'] == $_POST['password'])) {
-                    return 'Campos senhas não possuem a mesma senha.';
-                }
-            }
-        }
+        if(!empty($_POST['repassword'])) {
+            if(strlen($_POST['repassword']) > 50 or strlen($_POST['repassword']) < 6) return 'Campo nova senha não está no tamanho especificado.';
+            if($_POST['password'] != $_POST['repassword']) return 'Campos possuem senhas diferentes.';
+        } 
+        if(!empty($_POST['newpassword'])) {
+            if(strlen($_POST['newpassword']) > 50 or strlen($_POST['newpassword']) < 6) return 'Campo nova senha não está no tamanho especificado.';
+        } 
 
         return '';
     }
@@ -70,49 +67,46 @@ class UserController extends Controller {
             $this->loadErrors('login', $error);
         }
     }
-    
-    public function register()
-    {
-        $this->load('register');
-    }
-    
-    public function authRegister()
-    {
-        $error = $this->verifyForm();
-        if($error == '') {
 
-            $result = $this->user_model->insert();
-            if (gettype($result) == 'object') {
-                $this->startSession($result);
-                $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
-            } else { $this->loadErrors('register', $result); }
+    public function add()
+    {
+        if($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $this->load('addUser');
         } else {
-            $this->loadErrors('register', $error);
-        }
+            $error = $this->verifyForm();
+            if($error == '') {
 
-    }
-
-    public function editProfile()
-    {
-        $this->load('editProfile');
-    }
-
-    public function saveProfile()
-    {
-        $error = $_POST['repassword'] != '' ? $this->verifyForm(true, false) : $this->verifyForm(false, false);
-        if($error == '') {
-
-            $result = $this->user_model->save();
-            if (gettype($result) == 'object') {
-                $this->startSession($result);
-                $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
-            } else { $this->loadErrors('editProfile', $result); }
-        } else {
-            $this->loadErrors('editProfile', $error);
+                $result = $this->user_model->insert();
+                if (gettype($result) == 'object') {
+                    $this->startSession($result);
+                    $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
+                } else { $this->loadErrors('addUser', $result); }
+            } else {
+                $this->loadErrors('addUser', $error);
+            }
         }
     }
 
-    public function deleteProfile()
+    public function edit($data)
+    {
+        if($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $this->load('editUser');
+        } else {
+            $error = $this->verifyForm();
+            if($error == '') {
+
+                $result = $this->user_model->save();
+                if (gettype($result) == 'object') {
+                    $this->startSession($result);
+                    $_SESSION['logged'] ? header('Location: '. strval($_ENV['BASE_URL']) .'/') : null;
+                } else { $this->loadErrors('editUser', $result); }
+            } else {
+                $this->loadErrors('editUser', $error);
+            }
+        }
+    }
+
+    public function delete()
     {
         $this->user_model->delete();
         $this->loggout();

@@ -90,10 +90,6 @@ main form.form .btn-default {
 }
 
 @media(max-width: 450px) {
-    main form.form h1 {
-        margin-bottom: 50px;
-    }
-
     main form.form a {
         float: none;
         display: block;

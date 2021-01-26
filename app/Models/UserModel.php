@@ -18,40 +18,35 @@ class UserModel extends Model {
         return $obj;
     }
 
-    public function insert()
-    {
-        if(!$this->findEmail()) {
+    public function insert() {
+        if($this->findEmail()) return 'O e-mail que você digitou já foi cadastrado.';
 
-            $obj = $this->create_obj();
-            $sql = 'INSERT INTO "user" (name, email, password) VALUES (?, ?, ?)';
-            $array = array(
-                $obj->getName(),
-                $obj->getEmail(),
-                MD5($obj->getPassword())
-            );
-            $this->query($sql, $array);
-            
-            return $this->auth();
-        } else { return 'O e-mail que você digitou já foi cadastrado.'; }
+        $obj = $this->create_obj();
+        $sql = 'INSERT INTO "user" (name, email, password) VALUES (?, ?, ?)';
+        $array = array(
+            $obj->getName(),
+            $obj->getEmail(),
+            MD5($obj->getPassword())
+        );
+        $this->query($sql, $array);
+        
+        return $this->auth();
     }
 
     public function save()
     {
+        if($_SESSION['email'] != $_POST['email']) {
+            if($this->findEmail()) return 'O e-mail que você digitou já foi cadastrado.';
+        }
+        if($_SESSION['password'] != md5($_POST['password'])) return 'A senha que você digitou está incorreta.';
+
         $obj = $this->create_obj();
-        $isValidEmail = $_SESSION['email'] == $obj->getEmail();
-        if(!$isValidEmail) {
-            if($this->findEmail()) {
-                return 'O e-mail que você digitou já foi cadastrado.';
-            }
+        if(!empty($_POST['newpassword'])) {
+            $obj->setPassword(md5($_POST['newpassword']));
+        } else {
+            $obj->setPassword($_SESSION['password']);
         }
-        if($_POST['password'] != '') {
-            $isValidPassword = $_SESSION['password'] == md5($obj->getPassword());
-            if(!$isValidPassword) {
-                return 'A senha que você digitou está incorreta.';
-            } else {
-                $obj->setPassword(md5($_POST['repassword']));
-            }
-        }
+        $obj->setId($_SESSION['id']);
         
         $sql = 'UPDATE "user" SET name = ?, email = ?, "password" = ? WHERE id = ?';
         $array = array(

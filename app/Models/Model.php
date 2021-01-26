@@ -23,7 +23,7 @@ class Model {
         $conn = $this->connect();
         $query = $conn->prepare($sql);
         $query->execute($array);
-        $conn = null;
+        // $conn = null;
 
         return $query;
     }

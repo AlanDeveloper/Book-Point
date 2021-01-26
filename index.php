@@ -28,14 +28,18 @@ $router->get("/support", "Controller:support");
 $router->get("/login", "UserController:login");
 $router->post("/login", "UserController:authLogin");
 
-$router->get("/register", "UserController:register");
-$router->post("/register", "UserController:authRegister");
+// USER
+$router->group('user');
 
-$router->get("/editProfile", "UserController:editProfile");
-$router->post("/editProfile", "UserController:saveProfile");
+$router->get("/add", "UserController:add");
+$router->post("/add", "UserController:add");
+
+$router->get("/edit/{id}", "UserController:edit");
+$router->post("/edit/{id}", "UserController:edit");
 
 $router->get("/loggout", "UserController:loggout");
-$router->get("/deleteProfile", "UserController:deleteProfile");
+
+$router->get("/delete", "UserController:delete");
 
 // BOOK
 $router->group('book');

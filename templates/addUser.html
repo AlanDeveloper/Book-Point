@@ -6,51 +6,35 @@
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/header.css">
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/footer.css">
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/login.css">
-<style>
-    main form.form a.btn-default {
-        border: 1px solid var(--color-secondary);
-        color: var(--color-secondary);
-        padding: 0 10px;
-        line-height: 40px;
-    }
-
-    @media(max-width: 700px) {
-        main form.form a.btn-default {
-            margin-left: 20px;
-        }
-    }
-</style>
 {% endblock %}
 {% block body %}
 {% block header %}{{ parent() }}{% endblock %}
 <main>
-    <form action="{{ base_url }}/editProfile" method="POST" class="form">
+    <form action="{{ base_url }}/user/add" method="POST" class="form">
         <h1>Encontre o melhor preço para seus livros favoritos!</h1>
         <div>
             <label>Nome: </label>
             <input type="text" class="form-input" name="name" maxlength="50" placeholder="Insira seu nome"
-                value="{{ session.name }}">
+            value="{% if form['name']  %}{{ form['name'] }}{% endif %}">
         </div>
         <div>
             <label>E-mail: </label>
             <input type="email" class="form-input" name="email" maxlength="255" placeholder="Insira seu e-mail"
-                value="{{ session.email }}">
+            value="{% if form['email']  %}{{ form['email'] }}{% endif %}">
         </div>
         <div>
             <label>Senha: </label>
-            <input type="password" class="form-input" name="password" minlength="6" maxlength="50"
-                placeholder="Insira sua senha">
+            <input type="password" class="form-input" name="password" minlength="6" maxlength="50" placeholder="Insira sua senha">
         </div>
         <div class="last">
-            <label>Nova senha: </label>
-            <input type="password" class="form-input" name="repassword" minlength="6" maxlength="50"
-                placeholder="Insira sua nova senha">
+            <label>Repita sua senha: </label>
+            <input type="password" class="form-input" name="repassword" minlength="6" maxlength="50" placeholder="Insira novamente sua senha">
         </div>
         <small>
             {% if error %}{{ error }}{% endif %}
         </small>
-        <button type="submit" class="btn-default">Salvar</button>
-        <a href="{{ base_url }}/deleteProfile" class="btn-default">Deletar conta</a>
+        <a href="{{ base_url }}/login">Possuí uma conta? Conecte-se</a>
+        <button type="submit" class="btn-default">Cadastrar-se</button>
     </form>
 </main>
 {% block footer %}{{ parent() }}{% endblock %}
