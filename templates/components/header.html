@@ -7,7 +7,7 @@
                     <a href="#" data-activates="menu-mobile" class="button-collapse"><i class="icon-menu"></i></a>
                 </div>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{base_url}}/" class="{% if route == '/' %} active {% endif %}">Início</a></li>
+                    <li><a href="{{base_url}}/" class="{% if route == {{base_url}} ~ '/' %} active {% endif %}">Início</a></li>
                     <li><a href="{{base_url}}/support" class="{% if route == '/support' %} active {% endif %}">Suporte</a></li>
                     <li>
                         <div class="dropbtn">
@@ -28,7 +28,7 @@
                             {% endif %}
                         </div>
                     </li>
-                    <li><a href="#" class="p-right"><i class="icon-cart"></i></a></li>
+                    <li><a href="{{base_url}}/car" class="p-right"><i class="icon-cart"></i></a></li>
                 </ul>
                 <ul class="side-nav" id="menu-mobile">
                     <li><a href="{{base_url}}/" class="{% if route == '/' %} active {% endif %}">INÍCIO</a></li>
@@ -50,7 +50,7 @@
                     {% endif %}
                 </ul>
                 <div class="mobile right">
-                    <a href="#"><i class="icon-cart"></i></a>
+                    <a href="{{base_url}}/car"><i class="icon-cart"></i></a>
                 </div>
             </div>
         </nav>

@@ -24,6 +24,8 @@ $router->group(null);
 $router->get("/", "Controller:home");
 $router->get("/search", "BookController:search");
 
+$router->get("/car", "Controller:car");
+
 $router->get("/support", "Controller:support");
 $router->post("/support", "Controller:support");
 

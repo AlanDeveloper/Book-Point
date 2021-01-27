@@ -59,6 +59,9 @@ main .gallery-cell.card .details {
 
 main .gallery-cell.card p.title {
     font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
     color: var(--color-primary);
 }
 

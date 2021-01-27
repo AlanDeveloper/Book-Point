@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% use 'components/header.html' %}
+{% use 'components/footer.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/header.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/footer.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/barSearch.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/admin.css">
+<style>
+    main a.btn-default {
+        border: 1px solid var(--color-secondary);
+        color: var(--color-secondary);
+        padding: 11px;
+        line-height: 40px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+{% block header %}{{ parent() }}{% endblock %}
+<main>
+    <div class="category">
+        <h1>Seu carrinho de compras!</h1>
+        <hr>
+        <a href="{{ base_url }}/user/delete" class="btn-default">Cancelar conta</a>
+        <button class="btn-default"><a href="#">Finalizar compra</a></button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Qtd</th>
+                <th>Preço</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for obj in objs %}
+            <tr>
+                <td>{{attribute(obj, 'getName')}}</td>
+                <td>{{attribute(obj, 'getAmount')}}</td>
+                <td>R$ {{attribute(obj, 'getFormatedPrice')}}</td>
+                <td class="buttons"><a href="{{base_url}}/book/delete/{{attribute(obj, 'getId')}}"><i
+                            class="icon-trash"></i></a></td>
+            </tr>
+            {% endfor %}
+            {%if objs | length == 0 %}
+            <tr>
+                <td colspan="5" class="not-found">Nenhum livro encontrado.</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</main>
+{% block footer %}{{ parent() }}{% endblock %}
+{% endblock%}
+
+{% block javascripts %}{% endblock %}

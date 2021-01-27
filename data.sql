@@ -21,7 +21,6 @@ CREATE TABLE "book"(
 CREATE TABLE "cart"(
     "id_user" bigint,
     "id_book" bigint,
-    "total" double precision,
 	PRIMARY KEY("id_user", "id_book")
 );
 
