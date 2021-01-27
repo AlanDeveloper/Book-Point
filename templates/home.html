@@ -31,7 +31,7 @@
             {% for obj in objs %}
             <div class="gallery-cell card is-selected">
                 <div>
-                    <img src="{{attribute(obj, 'getImage')}}" alt="{{attribute(obj, 'getName')}}">
+                    <img src="{{base_url}}/{{attribute(obj, 'getImage')}}" alt="{{attribute(obj, 'getName')}}">
                     <div class="details">
                         <p class="title">{{attribute(obj, 'getName')}}</p>
                         <p class="subtitle">{{attribute(obj, 'getAuthor')}}</p>
