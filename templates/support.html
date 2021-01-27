@@ -21,11 +21,11 @@
             <p>E-mail: exemplo@gmail.com</p>
         </div>
     </div>
-    <form class="form">
+    <form action="{{base_url}}/support" method="POST" class="form">
         <h1>Caso possua alguma dúvida ou queira relatar um problema</h1>
         <div>
             <label>E-mail:</label>
-            <input type="email" name="email" class="form-input" value="{{ session.email }}" placeholder="Insira seu e-mail">
+            <input type="email" name="email" class="form-input" maxlength="255" value="{{ session.email }}" placeholder="Insira seu e-mail">
         </div>
         <div>
             <label>Relate seu problema:</label>

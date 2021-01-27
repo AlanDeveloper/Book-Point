@@ -2,6 +2,8 @@
 
 namespace MyApp\Controllers;
 
+use MyApp\Controllers\Support\Email;
+
 use MyApp\Models\BookModel;
 use MyApp\Models\UserModel;
 
@@ -45,6 +47,18 @@ class Controller {
     
     public function support()
     {
-        $this->load("support");
+        if($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $this->load("support");
+        } else {
+            $mail = new Email();
+            $mail->add(
+                'Equipe BookPoint',
+                '<h1>Feedback de usuário</h1>Agradecemos pelo seu tempo em tentar fazer-nos uma plataforma melhor, retornaremos seu problema/sugestão em brebe :)',
+                explode('@', $_POST['email'])[0],
+                $_POST['email']
+            )->send();
+
+            header('Location: '. strval($_ENV['BASE_URL']) .'/support');
+        }
     }
 }
