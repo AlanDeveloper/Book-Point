@@ -143,4 +143,11 @@ class BookController extends Controller {
             "objs" => $objs
         ]);
     }
+
+    public function details($data) {
+        $obj = $this->book_model->findBy('id', $data['id']);
+        $this->load("detailsBook", [
+            "obj" => $obj[0]
+        ]);
+    }
 }

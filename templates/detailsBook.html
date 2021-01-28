@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+{% use 'components/header.html' %}
+{% use 'components/footer.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/header.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/footer.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/details.css">
+{% endblock %}
+
+{% block body %}
+{% block header %}{{ parent() }}{% endblock %}
+<main>
+    <div class="details">
+        <img src="{{base_url}}/{{attribute(obj, 'getImage')}}" alt="{{attribute(obj, 'getName')}}">
+        <div class="info">
+            <p class="title">{{attribute(obj, 'getName')}}</p>
+            <p class="subtitle">{{attribute(obj, 'getAuthor')}}</p>
+            <p class="price">R$ {{attribute(obj, 'getFormatedPrice')}}</p>
+            <div class="credit-card">
+                <i class="icon-credit-card"></i>
+                <p>cartão de credito</p>
+            </div>
+            <p class="plots">em até 1x sem juros</p>
+            <div class="buttons">
+                <a href="#" class="btn-default">Adicionar ao carrinho</a>
+                <button class="btn-default">Adicionar ao carrinho</button>
+                <button class="btn-default-secondary">Comprar</button>
+                <a href="#" class="btn-default-secondary">Comprar</a>
+            </div>
+        </div>
+    </div>
+    <div class="description">
+        <div>
+            <h1>Sinopse</h1>
+            <p class="text-justify">
+                Atualmente, a nossa livraria se dedica a oferecer um espaço multimídia, onde a busca pelo produto é apenas o início
+                de uma jornada enriquecedora: nossas lojas dão vida à cultura por meio de seu extenso acervo e também de seus
+                teatros, auditórios, cafés e eventos gratuitos. Venha nos conhecer!
+            </p>
+        </div>
+        <div>
+            <h1>Características</h1>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Idioma</th>
+                        <td>{{attribute(obj, 'getLanguage')}}</td>
+                    </tr>
+                    <tr>
+                        <th>Gênero(s)</th>
+                        <td>{{attribute(obj, 'getGenre')}}</td>
+                    </tr>
+                    <tr>
+                        <th>Autor</th>
+                        <td>{{attribute(obj, 'getAuthor')}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% block footer %}{{ parent() }}{% endblock %}
+{% endblock%}
+
+{% block javascripts %}
+{% endblock %}

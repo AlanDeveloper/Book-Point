@@ -31,9 +31,13 @@
             {% for obj in objs %}
             <div class="gallery-cell card is-selected">
                 <div>
-                    <img src="{{base_url}}/{{attribute(obj, 'getImage')}}" alt="{{attribute(obj, 'getName')}}">
+                    <a href="{{base_url}}/book/{{attribute(obj, 'getId')}}">
+                        <img src="{{base_url}}/{{attribute(obj, 'getImage')}}" alt="{{attribute(obj, 'getName')}}">
+                    </a>
                     <div class="details">
-                        <p class="title">{{attribute(obj, 'getName')}}</p>
+                        <a href="{{base_url}}/book/{{attribute(obj, 'getId')}}">
+                            <p class="title">{{attribute(obj, 'getName')}}</p>
+                        </a>
                         <p class="subtitle">{{attribute(obj, 'getAuthor')}}</p>
                         <p class="price">R$ {{attribute(obj, 'getFormatedPrice')}}</p>
                         <button class="btn-default">Comprar</button>

@@ -50,6 +50,8 @@ $router->group('book');
 
 $router->get("/", "BookController:home");
 
+$router->get("/{id}", "BookController:details");
+
 $router->get("/add", "BookController:add");
 $router->post("/add", "BookController:add");
 

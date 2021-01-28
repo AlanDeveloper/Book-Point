@@ -1,0 +1,89 @@
+main .details {
+    display: flex;
+}
+
+main .details img {
+    justify-content: center;
+    height: 300px;
+}
+
+main .details .info {
+    margin-left: 40px;
+}
+
+main .details p {
+    margin: 10px 0;
+}
+
+main .details p.title {
+    margin-top: 0;
+    font-size: 20px;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+main .details p.subtitle {
+    color: var(--color-silver-strong);
+    font-size: 16px;
+}
+
+main .details p.price {
+    color: var(--color-green);
+    font-size: 20px;
+}
+
+main .details .credit-card {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+main i.icon-credit-card {
+  display: block;
+  width: 40px;
+  height: 30px;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-image: url('../imgs/credit_card.svg');
+}
+
+main .details .plots {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+main .details .buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+main .details button {
+    padding: 10px 0px;
+    margin-top: 10px;
+    width: 300px;
+}
+
+main .description {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+main .description div {
+    margin-top: 50px;
+}
+
+main .description table tr {
+    border-bottom: 1px solid var(--color-silver);
+}
+
+@media(max-width: 700px) {
+    main .details img {
+        height: 250px;
+    }
+}
+
+@media(max-width: 550px) {
+    main .description {
+        margin-bottom: 50px;
+    }
+}
