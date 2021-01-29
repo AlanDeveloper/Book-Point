@@ -4,7 +4,7 @@ main .details {
 
 main .details img {
     justify-content: center;
-    height: 300px;
+    height: 290px;
 }
 
 main .details .info {
@@ -53,14 +53,13 @@ main .details .plots {
 }
 
 main .details .buttons {
-    display: flex;
-    flex-direction: column;
+    max-width: 300px;
 }
 
 main .details button {
     padding: 10px 0px;
     margin-top: 10px;
-    width: 300px;
+    width: 140%;
 }
 
 main .description {
@@ -76,14 +75,49 @@ main .description table tr {
     border-bottom: 1px solid var(--color-silver);
 }
 
+@media(max-width: 1000px) {
+    main .details img {
+        height: 300px;
+    }
+}
+
 @media(max-width: 700px) {
     main .details img {
-        height: 250px;
+        height: 295px;
+    }
+
+    main .details button {
+        width: 100%;
+    }
+
+    main .description {
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
 }
 
 @media(max-width: 550px) {
-    main .description {
-        margin-bottom: 50px;
+    main .details .info {
+        margin-left: 20px;
+    }
+}
+
+@media(max-width: 440px) {
+    main .details {
+        flex-direction: column;
+    }
+    
+    main .details img {
+        align-self: center;
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    main .details .info {
+        margin-left: 0;
+    }
+
+    main .details .buttons {
+        max-width: none;
     }
 }
