@@ -40,7 +40,9 @@
                         </a>
                         <p class="subtitle">{{attribute(obj, 'getAuthor')}}</p>
                         <p class="price">R$ {{attribute(obj, 'getFormatedPrice')}}</p>
-                        <button class="btn-default">Comprar</button>
+                        <a {% if session.logged %}href="#"{% else %}href="{{base_url}}/user/login"{% endif %}>
+                            <button class="btn-default">Comprar</button>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -7,13 +7,6 @@
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/footer.css">
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/login.css">
 <style>
-    main form.form a.btn-default {
-        border: 1px solid var(--color-secondary);
-        color: var(--color-secondary);
-        padding: 0 10px;
-        line-height: 40px;
-    }
-
     @media(max-width: 700px) {
         main form.form a.btn-default {
             margin-left: 20px;
@@ -50,7 +43,9 @@
             {% if error %}{{ error }}{% endif %}
         </small>
         <button type="submit" class="btn-default">Salvar</button>
-        <a href="{{ base_url }}/user/delete" class="btn-default">Deletar conta</a>
+        <a href="{{ base_url }}/user/delete">
+            <button class="btn-default-secondary">Deletar conta</button>
+        </a>
     </form>
 </main>
 {% block footer %}{{ parent() }}{% endblock %}

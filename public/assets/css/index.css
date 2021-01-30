@@ -63,17 +63,18 @@ main form.form .form-input:focus {
   border: 2px solid var(--color-silver);
 }
 
-main button.btn-default {
+main .btn-default {
   background-color: var(--color-secondary);
   color: white;
   padding: 10px 15px;
-  border: none;
+  border: 1px solid var(--color-secondary);
 }
 
 main .btn-default-secondary {
   background-color: var(--color-active);
-  border: 1px solid var(--color-secondary);
   color: var(--color-secondary);
+  padding: 10px 15px;
+  border: 1px solid var(--color-secondary);
 }
 
 main .not-found {

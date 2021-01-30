@@ -21,6 +21,8 @@ main form.form small {
 
 main form.form a {
     margin-left: 20px;
+}
+main form.form a.link {
     line-height: 42px;
 }
 
@@ -49,7 +51,6 @@ main form.form .btn-default {
     }
 
     main form.form .btn-default {
-        padding: 10px 20px;
         margin-top: 20px;
     }
 }

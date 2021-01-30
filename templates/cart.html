@@ -8,13 +8,6 @@
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/barSearch.css">
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/admin.css">
 <style>
-    main a.btn-default {
-        border: 1px solid var(--color-secondary);
-        color: var(--color-secondary);
-        padding: 11px;
-        line-height: 40px;
-    }
-
     .category {
         margin-top: 0;
     }
@@ -27,8 +20,12 @@
     <div class="category">
         <h1>Seu carrinho de compras!</h1>
         <hr>
-        <a href="{{ base_url }}/user/delete" class="btn-default">Cancelar conta</a>
-        <button class="btn-default"><a href="#">Finalizar compra</a></button>
+        <a href="{{ base_url }}/user/delete">
+            <button class="btn-default-secondary">Cancelar conta</button>
+        </a>
+        <a href="#">
+            <button class="btn-default"><a href="#">Finalizar compra</a></button>
+        </a>
     </div>
     <table>
         <thead>
@@ -46,8 +43,7 @@
                 <td>{{attribute(obj, 'getName')}}</td>
                 <td>{{attribute(obj, 'getAmount')}}</td>
                 <td>R$ {{attribute(obj, 'getFormatedPrice')}}</td>
-                <td class="buttons"><a href="{{base_url}}/book/delete/{{attribute(obj, 'getId')}}"><i
-                            class="icon-trash"></i></a></td>
+                <td class="buttons"><a href="{{base_url}}/book/delete/{{attribute(obj, 'getId')}}"><i class="icon-trash"></i></a></td>
             </tr>
             {% endfor %}
             {%if objs | length == 0 %}
