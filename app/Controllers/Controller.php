@@ -6,7 +6,7 @@ use MyApp\Controllers\Support\Email;
 
 use MyApp\Models\BookModel;
 use MyApp\Models\UserModel;
-use MyApp\Models\Cart;
+use MyApp\Models\CartModel;
 
 class Controller {
 
@@ -31,7 +31,7 @@ class Controller {
     {
         $this->book_model = new BookModel();
         $this->user_model = new UserModel();
-        $this->cart_model = new Cart();
+        $this->cart_model = new CartModel();
     }
 
     public function home()

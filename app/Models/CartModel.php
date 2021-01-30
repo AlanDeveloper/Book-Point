@@ -2,7 +2,7 @@
 
 namespace MyApp\Models;
 
-class Cart extends Model {
+class CartModel extends Model {
 
     public function insert($data) {
         $sql = 'INSERT INTO "cart" (id_user, id_book) VALUES (?, ?)';
@@ -15,12 +15,26 @@ class Cart extends Model {
         return true;
     }
 
+    public function find($data)
+    {
+        $sql = 'SELECT * FROM "cart" WHERE id_book = ?';
+
+        $array = array($data);
+        $result = $this->query($sql, $array);
+        if($result->rowCount() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function findAll()
     {
-        $sql = 'SELECT * FROM "cart"';
+        $sql = 'SELECT * FROM "cart" WHERE id_user = ?';
 
         $objs = [];
-        $result = $this->query($sql);
+        $array = array($_SESSION['id']);
+        $result = $this->query($sql, $array);
         $result = $result->fetchAll();
         foreach($result as $obj) {
             array_push($objs, $obj);
