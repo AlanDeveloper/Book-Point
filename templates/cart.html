@@ -15,6 +15,29 @@
     main td img {
         height: 100px;
     }
+
+    main td select {
+        display: block;
+        max-width: 60px;
+        border: 2px solid var(--color-silver);
+        outline: 0;
+        left: -2px;
+        position: relative;
+    }
+
+    .remove {
+        top: 5px;
+        left: -2px;
+        position: relative;
+    }
+
+    tfoot {
+        border-top: 1px solid #d0d0d0;
+    }
+
+    .value {
+        font-size: 1.2rem;
+    }
 </style>
 {% endblock %}
 
@@ -38,7 +61,6 @@
                 <th></th>
                 <th>Qtd</th>
                 <th>Preço</th>
-                <th></th>
             </tr>
         </thead>
 
@@ -47,9 +69,15 @@
             <tr>
                 <td><img src="{{base_url}}/{{attribute(obj, 'getImage')}}" alt="{{attribute(obj, 'getName')}}"></td>
                 <td>{{attribute(obj, 'getName')}}</td>
-                <td>{{attribute(obj, 'getAmount')}}</td>
+                <td>
+                    <select class="form-input" name="amount">
+                    {% for i in range(1, attribute(obj, 'getAmount')) %}
+                        <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                    </select>
+                    <a href="{{base_url}}/cart/delete/{{attribute(obj, 'getId')}}" class="remove">Remover</a>
+                </td>
                 <td>R$ {{attribute(obj, 'getFormatedPrice')}}</td>
-                <td class="buttons"><a href="{{base_url}}/cart/delete/{{attribute(obj, 'getId')}}"><i class="icon-trash"></i></a></td>
             </tr>
             {% endfor %}
             {%if objs | length == 0 %}
@@ -58,6 +86,11 @@
             </tr>
             {% endif %}
         </tbody>
+        <tfoot>
+            <tr>
+                <th class="value">Total: R$ {{total}}</th>
+            </tr>
+        </tfoot>
     </table>
 </main>
 {% block footer %}{{ parent() }}{% endblock %}

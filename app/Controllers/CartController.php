@@ -6,18 +6,18 @@ class CartController extends Controller {
 
     public function home()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $cart = $this->cart_model->findAll();
-            $objs = [];
+        $cart = $this->cart_model->findAll();
+        $objs = [];
+        $total = 0;
 
-            for ($i=0; $i < count($cart); $i++) { 
-                $obj = $this->book_model->findBy('id', $cart[$i]['id_book']);
-                array_push($objs, $obj[0]);
-            }
-            $this->load("cart", ['objs' => $objs]);
-        } else {
-            $this->sendToCart();
+        for ($i=0; $i < count($cart); $i++) { 
+            $obj = $this->book_model->findBy('id', $cart[$i]['id_book']);
+            array_push($objs, $obj[0]);
+            $total += intval($obj[0]->getPrice());
         }
+        $total = number_format($total, 2, ",", ".");
+        $this->load("cart", ['objs' => $objs, 'total' => $total]);
+    
     }
 
     public function cancel()
