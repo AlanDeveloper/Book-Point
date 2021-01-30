@@ -17,9 +17,12 @@ class CartModel extends Model {
 
     public function find($data)
     {
-        $sql = 'SELECT * FROM "cart" WHERE id_book = ?';
+        $sql = 'SELECT * FROM "cart" WHERE id_book = ? AND id_user = ?';
 
-        $array = array($data);
+        $array = array(
+            $data,
+            $_SESSION['id']
+        );
         $result = $this->query($sql, $array);
         if($result->rowCount() == 1) {
             return true;
