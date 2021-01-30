@@ -2,8 +2,6 @@
 
 namespace MyApp\Controllers;
 
-use MyApp\Models\UserModel;
-
 class UserController extends Controller {
 
     protected function verifyForm()

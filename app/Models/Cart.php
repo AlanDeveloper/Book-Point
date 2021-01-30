@@ -4,11 +4,11 @@ namespace MyApp\Models;
 
 class Cart extends Model {
 
-    public function insert() {
+    public function insert($data) {
         $sql = 'INSERT INTO "cart" (id_user, id_book) VALUES (?, ?)';
         $array = array(
             $_SESSION['id'],
-            $_POST['id']
+            $data
         );
         $this->query($sql, $array);
         
@@ -27,5 +27,23 @@ class Cart extends Model {
         }
 
         return $objs;
+    }
+
+    public function delete($data)
+    {
+        $sql = 'DELETE FROM "cart" WHERE id_book = ?';
+        $array = array($data);
+        $this->query($sql, $array);
+        
+        return true;
+    }
+
+    public function deleteAll()
+    {
+        $sql = 'DELETE FROM "cart" WHERE id_user = ?';
+        $array = array($_SESSION['id']);
+        $this->query($sql, $array);
+        
+        return true;
     }
 }

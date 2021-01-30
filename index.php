@@ -24,10 +24,20 @@ $router->group(null);
 $router->get("/", "Controller:home");
 $router->get("/search", "BookController:search");
 
-$router->get("/car", "Controller:car");
 
 $router->get("/support", "Controller:support");
 $router->post("/support", "Controller:support");
+
+// CART
+$router->group('cart');
+
+$router->get("/", "CartController:home");
+
+$router->get("/sendToCart/{id}", "CartController:sendToCart");
+
+$router->get("/delete/{id}", "CartController:delete");
+
+$router->get("/cancel", "CartController:cancel");
 
 // USER
 $router->group('user');

@@ -2,8 +2,6 @@
 
 namespace MyApp\Controllers;
 
-use MyApp\Models\BookModel;
-
 class BookController extends Controller {
 
     protected function verifyForm()

@@ -11,6 +11,10 @@
     .category {
         margin-top: 0;
     }
+
+    main td img {
+        height: 100px;
+    }
 </style>
 {% endblock %}
 
@@ -20,7 +24,7 @@
     <div class="category">
         <h1>Seu carrinho de compras!</h1>
         <hr>
-        <a href="{{ base_url }}/user/delete">
+        <a href="{{ base_url }}/cart/cancel">
             <button class="btn-default-secondary">Cancelar conta</button>
         </a>
         <a href="#">
@@ -31,6 +35,7 @@
         <thead>
             <tr>
                 <th>Produto</th>
+                <th></th>
                 <th>Qtd</th>
                 <th>Preço</th>
                 <th></th>
@@ -40,10 +45,11 @@
         <tbody>
             {% for obj in objs %}
             <tr>
+                <td><img src="{{base_url}}/{{attribute(obj, 'getImage')}}" alt="{{attribute(obj, 'getName')}}"></td>
                 <td>{{attribute(obj, 'getName')}}</td>
                 <td>{{attribute(obj, 'getAmount')}}</td>
                 <td>R$ {{attribute(obj, 'getFormatedPrice')}}</td>
-                <td class="buttons"><a href="{{base_url}}/book/delete/{{attribute(obj, 'getId')}}"><i class="icon-trash"></i></a></td>
+                <td class="buttons"><a href="{{base_url}}/cart/delete/{{attribute(obj, 'getId')}}"><i class="icon-trash"></i></a></td>
             </tr>
             {% endfor %}
             {%if objs | length == 0 %}

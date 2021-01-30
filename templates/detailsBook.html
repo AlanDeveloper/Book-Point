@@ -23,10 +23,10 @@
             </div>
             <p class="plots">em até 1x sem juros</p>
             <div class="buttons">
-                <a {% if session.logged %}href="#"{% else %}href="{{base_url}}/user/login"{% endif %}>
+                <a {% if session.logged %}href="{{base_url}}/cart/sendToCart/{{attribute(obj, 'getId')}}"{% else %}href="{{base_url}}/user/login"{% endif %}>
                     <button class="btn-default">Adicionar ao carrinho</button>
                 </a>
-                <a {% if session.logged %}href="#"{% else %}href="{{base_url}}/user/login"{% endif %}>
+                <a {% if session.logged %}href="{{base_url}}/cart/sendToCart/{{attribute(obj, 'getId')}}"{% else %}href="{{base_url}}/user/login"{% endif %}>
                     <button class="btn-default-secondary">Comprar</button>
                 </a>
             </div>

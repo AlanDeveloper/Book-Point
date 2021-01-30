@@ -31,7 +31,7 @@ class Controller {
     {
         $this->book_model = new BookModel();
         $this->user_model = new UserModel();
-        $this->cart = new Cart();
+        $this->cart_model = new Cart();
     }
 
     public function home()
@@ -62,25 +62,5 @@ class Controller {
 
             header('Location: '. strval($_ENV['BASE_URL']) .'/support');
         }
-    }
-
-    public function car()
-    {
-        if($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $cart = $this->cart->findAll();
-            $objs = [];
-            foreach($cart as $obj) {
-                $objs = $this->book_model->findBy('id', $obj);
-                array_push($objs, $obj);
-            }
-            $this->load("cart", ['objs' => $objs]);
-        } else {
-            $this->sendToCart();
-        }
-    }
-
-    public function sendToCart()
-    {
-        echo 'post';
     }
 }
