@@ -126,8 +126,10 @@ class BookController extends Controller {
             $objs = $this->book_model->findBy('name', $_GET['query']);
         } else {
             $title = $data['category'];
-            if(in_array($title, array('promotions', 'bestSales', 'smallPrice'))) {
-                $objs = $this->book_model->findByOrder('amount', 'asc');   
+            if(in_array($title, array('bestSales'))) {
+                $objs = $this->book_model->findByOrder('amount', 'asc');
+            } else if (in_array($title, array('promotions', 'smallPrice'))) {
+                $objs = $this->book_model->findByOrder('price', 'asc');
             } else {
                 $objs = $this->book_model->findBy('genre', $data['category']);
             }
