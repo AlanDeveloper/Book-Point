@@ -80,6 +80,8 @@ main .btn-default-secondary {
 main .not-found {
   text-align: center;
   text-align: -webkit-center;
+  /* position: relative;
+  top: -115px; */
 }
 
 p.text-justify {

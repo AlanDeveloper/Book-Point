@@ -32,6 +32,7 @@
             Resultado para {{ query |upper }}
             {% else %}{% if title %}Resultado para {{ title |upper }}{% else %}MAIS POPULARES{% endif %}{% endif %}</h1>
         <hr>
+        {% if objs | length != 0 %}
         <div class="gallery js-flickity books">
             {% for obj in objs %}
             <div class="gallery-cell card is-selected">
@@ -52,12 +53,13 @@
                 </div>
             </div>
             {% endfor %}
-            {%if objs | length == 0 %}
-            <div>
-                <p class="not-found">Nenhum livro encontrado.</p>
-            </div>
-            {% endif %}
         </div>
+        {% endif %}
+        {% if objs | length == 0 %}
+        <div style="margin-top: 40px;margin-bottom: 40px;">
+            <p class="not-found">Nenhum livro encontrado.</p>
+        </div>
+        {% endif %}
     </div>
 </main>
 {% block footer %}{{ parent() }}{% endblock %}
