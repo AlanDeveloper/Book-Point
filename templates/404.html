@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% use 'components/header.html' %}
+{% use 'components/footer.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/header.css">
+<link rel="stylesheet" href="{{base_url}}/public/assets/css/footer.css">
+
+<style>
+    main h1 {
+        text-align: center;
+        margin-top: 50px;
+        color: var(--color-silver);
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+{% block header %}{{ parent() }}{% endblock %}
+<main>
+    <h1>Página não encontrada!</h1>
+    <h1>D:</h1>
+</main>
+{% block footer %}{{ parent() }}{% endblock %}
+{% endblock%}
+
+{% block javascripts %}
+{% endblock %}

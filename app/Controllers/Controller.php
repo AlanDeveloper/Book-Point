@@ -27,6 +27,15 @@ class Controller {
         echo $twig->render($view.'.html', $params);
     }
 
+    protected function verifyPermission()
+    {
+        if(!empty($_SESSION)) {
+            return $_SESSION['admin'];
+        } else {
+            return false;
+        }
+    }
+
     public function __construct()
     {
         $this->book_model = new BookModel();

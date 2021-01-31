@@ -53,12 +53,17 @@ class BookController extends Controller {
 
     public function home()
     {
+        if(!$this->verifyPermission()) return $this->load('404');
+
+        $this->verifyPermission();
         $objs = $this->book_model->findAll();
         $this->load('homeBook', ['objs' => $objs]);
     }
 
     public function add()
     {
+        if(!$this->verifyPermission()) return $this->load('404');
+
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
             $this->load('addBook');
         } else {
@@ -81,6 +86,8 @@ class BookController extends Controller {
 
     public function edit($data)
     {
+        if(!$this->verifyPermission()) return $this->load('404');
+
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
             $obj = $this->book_model->findBy('id', $data['id']);
             $this->load("editBook", [
@@ -105,13 +112,15 @@ class BookController extends Controller {
 
     public function delete($data)
     {
+        if(!$this->verifyPermission()) return $this->load('404');
+
         $pathToImage = $this->book_model->delete($data['id']);
         unlink($pathToImage);
         header('Location: '. strval($_ENV['BASE_URL']) .'/book');
     }
 
     public function search($data = null)
-    {
+    {    
         if($data == null) {
             $title = $_GET['query'];
             $objs = $this->book_model->findBy('name', $_GET['query']);
@@ -135,6 +144,8 @@ class BookController extends Controller {
 
     public function searchAdmin()
     {
+        if(!$this->verifyPermission()) return $this->load('404');
+
         $objs = $this->book_model->findBy('name', $_GET['query']);
         $this->load("homeBook", [
             "query" => $_GET["query"],
@@ -142,7 +153,8 @@ class BookController extends Controller {
         ]);
     }
 
-    public function details($data) {
+    public function details($data)
+    {
         $obj = $this->book_model->findBy('id', $data['id']);
         $this->load("detailsBook", [
             "obj" => $obj[0]
