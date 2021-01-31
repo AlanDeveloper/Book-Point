@@ -7,45 +7,46 @@
                     <a href="#" data-activates="menu-mobile" class="button-collapse"><i class="icon-menu"></i></a>
                 </div>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{base_url}}/" class="{% if route == '/' %} active {% endif %}">Início</a></li>
-                    <li><a href="{{base_url}}/support" class="{% if route == '/support' %} active {% endif %}">Suporte</a></li>
+                    <li><a href="{{base_url}}/" class="{% if route == '' %} active {% endif %}">Início</a></li>
+                    <li><a href="{{base_url}}/support" class="{% if route == 'support' %} active {% endif %}">Suporte</a></li>
                     <li>
                         <div class="dropbtn">
                             <a href="#"><i class="icon-user"></i></a>
                             {% if session.logged %}
                                 <ul class="dropdown-login" {% if session.admin %}style="min-width: 200px;"{% else %}style="min-width: 150px;"{% endif %}>
                                     {% if session.admin %}
-                                        <li><a href="{{base_url}}/book" class="{% if route == base_url ~ '/book' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
+                                        <li><a href="{{base_url}}/book" class="{% if route == 'book' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
                                     {% endif %}
-                                    <li><a href="{{base_url}}/user/edit/{{session.id}}" class="{% if route == '/user/edit/' ~ session.id %}active{% endif %}">EDITAR PERFIL</a></li>
+                                    <li><a href="{{base_url}}/user/edit/{{session.id}}" class="{% if route == 'user' %}active{% endif %}">EDITAR PERFIL</a></li>
                                     <li><a href="{{base_url}}/user/loggout">SAIR</a></li>
                                 </ul>
                             {% else %}
                                 <ul class="dropdown-login">
-                                    <li><a href="{{base_url}}/user/login" class="{% if route == '/user/login' %} active {% endif %}">ENTRAR</a></li>
-                                    <li><a href="{{base_url}}/user/add" class="{% if route == '/user/add' %} active {% endif %}">CADASTRAR</a></li>
+                                    <li><a href="{{base_url}}/user/login" class="{% if route == 'user' %} active {% endif %}">ENTRAR</a></li>
+                                    <li><a href="{{base_url}}/user/add" class="{% if route == 'user' %} active {% endif %}">CADASTRAR</a></li>
                                 </ul>
                             {% endif %}
                         </div>
                     </li>
-                    <li><a href="{{base_url}}/cart" class="p-right"><i class="icon-cart"></i></a></li>
+                    <li><a href="{{base_url}}/cart" class="p-right {% if route == 'cart' %} active {% endif %}"><i class="icon-cart"></i></a></li>
                 </ul>
                 <ul class="side-nav" id="menu-mobile">
-                    <li><a href="{{base_url}}/" class="{% if route == '/' %} active {% endif %}">INÍCIO</a></li>
+                    <li><a href="{{base_url}}/" class="{% if route == '' %} active {% endif %}">INÍCIO</a></li>
                     <li><a href="{{base_url}}/book/search/all">TODAS AS CATEGORIAS</a></li>
                     <li><a href="{{base_url}}/book/search/promotions">MELHORES PROMOÇÕES</a></li>
                     <li><a href="{{base_url}}/book/search/bestSales">MAIS VENDIDOS</a></li>
                     <li><a href="{{base_url}}/book/search/smallPrice">MENOR PREÇO</a></li>
-                    <li><a href="{{base_url}}/support" class="{% if route == '/support' %} active {% endif %}">SUPORTE</a></li>
+                    <li><a href="{{base_url}}/support" class="{% if route == 'support' %} active {% endif %}">SUPORTE</a></li>
                     {% if session.logged %}
                         {% if session.admin %}
-                            <li><a href="{{base_url}}/book" class="{% if route == '/book' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
+                            <li><a href="{{base_url}}/book" class="{% if route == 'book' %} active {% endif %}">ÁREA ADMINISTRATIVA</a></li>
                         {% endif %}
 
-                        <li><a href="{{base_url}}/user/edit/{{session.id}}" class="{% if route == '/user/edit/' ~ session.id %}active{% endif %}">EDITAR PERFIL</a></li>
+                        <li><a href="{{base_url}}/user/edit/{{session.id}}" class="{% if route == 'user' %}active{% endif %}">EDITAR PERFIL</a></li>
                         <li><a href="{{base_url}}/user/loggout">SAIR</a></li>
-                        <li><a href="{{base_url}}/user/login" class="{% if route == '/user/' %} active {% endif %}">ENTRAR</a></li>
-                        <li><a href="{{base_url}}/user/add" class="{% if route == '/user/add' %} active {% endif %}">CADASTRAR</a></li>
+                    {% else %}
+                        <li><a href="{{base_url}}/user/login" class="{% if route == 'user' %} active {% endif %}">ENTRAR</a></li>
+                        <li><a href="{{base_url}}/user/add" class="{% if route == 'user' %} active {% endif %}">CADASTRAR</a></li>
                     {% endif %}
                 </ul>
                 <div class="mobile right">

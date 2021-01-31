@@ -20,7 +20,7 @@ class Controller {
         $url = explode($_ENV['BASE_URL'], "$protocolo://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
 
         $params = array_merge($params, [
-            "route" => $url[1],
+            "route" => explode('/', $url[1])[1],
             "base_url" => $_ENV['BASE_URL']
         ]); 
 

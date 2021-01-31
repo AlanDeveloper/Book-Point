@@ -1,0 +1,30 @@
+.category {
+    margin-top: 0;
+}
+
+main td img {
+    height: 100px;
+}
+
+main td select {
+    display: block;
+    max-width: 60px;
+    border: 2px solid var(--color-silver);
+    outline: 0;
+    left: -2px;
+    position: relative;
+}
+
+.remove {
+    top: 5px;
+    left: -2px;
+    position: relative;
+}
+
+tfoot {
+    border-top: 1px solid #d0d0d0;
+}
+
+.value {
+    font-size: 1.2rem;
+}

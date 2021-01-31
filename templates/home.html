@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/barSearch.css">
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/flickity.css">
 <link rel="stylesheet" href="{{base_url}}/public/assets/css/carousel.css">
+<style>
+    .image {
+        margin: auto;
+    }
+</style>
 {% endblock %}
 
 {% block body %}
@@ -31,7 +36,7 @@
             {% for obj in objs %}
             <div class="gallery-cell card is-selected">
                 <div>
-                    <a href="{{base_url}}/book/{{attribute(obj, 'getId')}}">
+                    <a href="{{base_url}}/book/{{attribute(obj, 'getId')}}" class="image">
                         <img src="{{base_url}}/{{attribute(obj, 'getImage')}}" alt="{{attribute(obj, 'getName')}}">
                     </a>
                     <div class="details">

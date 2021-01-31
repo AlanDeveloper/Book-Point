@@ -23,8 +23,8 @@ main .gallery-cell#img2 {
 main .gallery-cell.card {
     box-shadow: none;
     border: 1px solid var(--color-silver);
-    width: 23%;
-    height: 460px;
+    width: 22%;
+    height: 420px;
     padding: 10px;
 }
 
@@ -48,8 +48,7 @@ main .gallery-cell.card div {
 
 main .gallery-cell.card img {
     justify-content: center;
-    height: 260px;
-    margin: 15px;
+    height: 240px;
 }
 
 main .gallery-cell.card .details {
@@ -87,17 +86,14 @@ main .gallery-cell.card button {
     main .gallery-cell {
         height: 250px;
     }
+    main .gallery-cell.card {
+        width: 24%;
+    }
 }
 
 @media(max-width: 820px) {
     main .gallery-cell.card {
-        width: 30%;
-        height: 440px;
-    }
-    
-    main .gallery-cell.card img {
-        margin: 10px;
-        height: 200px;
+        width: 28%;
     }
 
     main .gallery-cell.card .details {
@@ -127,18 +123,17 @@ main .gallery-cell.card button {
         margin-bottom: 50px;
     }
 
-    main .gallery-cell {
+    /* main .gallery-cell {
         height: 200px;
-    }
+    } */
 
     main .gallery-cell.card {
-        width: 35%;
-        height: 370px;
+        width: 34%;
+        height: 400px;
     }
 
     main .gallery-cell.card img {
-        margin: 0 20px;
-        max-height: 200px;
+        max-height: 220px;
     }
 }
 
@@ -150,6 +145,6 @@ main .gallery-cell.card button {
 
 @media(max-width: 540px) {
     main .gallery-cell.card {
-        width: 55%;
+        width: 50%;
     }
 }
